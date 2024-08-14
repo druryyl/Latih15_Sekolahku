@@ -17,7 +17,7 @@ namespace Latih15_Sekolahku
         public int BeratBadan { get; set; }
 
 
-        public string PendidikanSebelumnya { get; ; set; }
+        public string PendidikanSebelumnya { get; set; }
         public DateTime TglIjazah { get; set; }
         public string NoIjazah { get; set; }
         public string LamaBelajar { get; set; }

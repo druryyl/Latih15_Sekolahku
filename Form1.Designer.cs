@@ -85,20 +85,19 @@
             panel10 = new Panel();
             label34 = new Label();
             panel11 = new Panel();
-            this.TglDiterimaDatePicker = new DateTimePicker();
+            TglDiterimaDatePicker = new DateTimePicker();
+            KompetensiText = new TextBox();
+            KelasPenerimaanText = new TextBox();
             label35 = new Label();
-            this.KompetensiText = new TextBox();
             label36 = new Label();
-            this.KelasPenerimaanText = new TextBox();
             label39 = new Label();
             panel8 = new Panel();
             label28 = new Label();
             panel9 = new Panel();
-            this.AlasanPindahText = new TextBox();
+            AlasanPindahText = new TextBox();
+            PindahanDariText = new TextBox();
+            TglIjazahDatePicker = new DateTimePicker();
             label29 = new Label();
-            this.LamaBelajarText = new TextBox();
-            this.NomorIjazahText = new TextBox();
-            this.PindahanDariText = new TextBox();
             label30 = new Label();
             label31 = new Label();
             PendidikanSebelumText = new TextBox();
@@ -107,6 +106,7 @@
             panel5 = new Panel();
             label16 = new Label();
             panel7 = new Panel();
+            KelainanJasmaniText = new TextBox();
             BeratBadanNumeric = new NumericUpDown();
             GolDarahORadio = new RadioButton();
             GolDarahABRadio = new RadioButton();
@@ -123,11 +123,11 @@
             panel17 = new Panel();
             label51 = new Label();
             panel18 = new Panel();
+            SeniText = new TextBox();
             CitaCitaText = new TextBox();
             label54 = new Label();
             BakatLainnyaText = new TextBox();
             KemasyarakatanText = new TextBox();
-            this.SeniText = new TextBox();
             label52 = new Label();
             OlahRagaText = new TextBox();
             label53 = new Label();
@@ -198,8 +198,8 @@
             SaveWaliButton = new Button();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
-            KelainanJasmaniText = new TextBox();
-            TglIjazahDatePicker = new DateTimePicker();
+            NoIjazahText = new TextBox();
+            LamaBelajarText = new TextBox();
             TabControl1.SuspendLayout();
             ListTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ListSiswaGrid).BeginInit();
@@ -816,11 +816,11 @@
             // 
             panel11.BackColor = Color.Gainsboro;
             panel11.BorderStyle = BorderStyle.FixedSingle;
-            panel11.Controls.Add(this.TglDiterimaDatePicker);
+            panel11.Controls.Add(TglDiterimaDatePicker);
+            panel11.Controls.Add(KompetensiText);
+            panel11.Controls.Add(KelasPenerimaanText);
             panel11.Controls.Add(label35);
-            panel11.Controls.Add(this.KompetensiText);
             panel11.Controls.Add(label36);
-            panel11.Controls.Add(this.KelasPenerimaanText);
             panel11.Controls.Add(label39);
             panel11.Location = new Point(6, 29);
             panel11.Margin = new Padding(3, 2, 3, 2);
@@ -830,12 +830,28 @@
             // 
             // TglDiterimaDatePicker
             // 
-            this.TglDiterimaDatePicker.CustomFormat = "ddd, dd-MMM-yyyy";
-            this.TglDiterimaDatePicker.Format = DateTimePickerFormat.Custom;
-            this.TglDiterimaDatePicker.Location = new Point(3, 106);
-            this.TglDiterimaDatePicker.Name = "TglDiterimaDatePicker";
-            this.TglDiterimaDatePicker.Size = new Size(212, 21);
-            this.TglDiterimaDatePicker.TabIndex = 3;
+            TglDiterimaDatePicker.CustomFormat = "ddd, dd-MMM-yyyy";
+            TglDiterimaDatePicker.Format = DateTimePickerFormat.Custom;
+            TglDiterimaDatePicker.Location = new Point(3, 106);
+            TglDiterimaDatePicker.Name = "TglDiterimaDatePicker";
+            TglDiterimaDatePicker.Size = new Size(212, 21);
+            TglDiterimaDatePicker.TabIndex = 3;
+            // 
+            // KompetensiText
+            // 
+            KompetensiText.Location = new Point(3, 64);
+            KompetensiText.Margin = new Padding(3, 2, 3, 2);
+            KompetensiText.Name = "KompetensiText";
+            KompetensiText.Size = new Size(212, 21);
+            KompetensiText.TabIndex = 2;
+            // 
+            // KelasPenerimaanText
+            // 
+            KelasPenerimaanText.Location = new Point(3, 23);
+            KelasPenerimaanText.Margin = new Padding(3, 2, 3, 2);
+            KelasPenerimaanText.Name = "KelasPenerimaanText";
+            KelasPenerimaanText.Size = new Size(212, 21);
+            KelasPenerimaanText.TabIndex = 1;
             // 
             // label35
             // 
@@ -846,14 +862,6 @@
             label35.TabIndex = 6;
             label35.Text = "Tanggal Diterima";
             // 
-            // KompetensiText
-            // 
-            this.KompetensiText.Location = new Point(3, 65);
-            this.KompetensiText.Margin = new Padding(3, 2, 3, 2);
-            this.KompetensiText.Name = "KompetensiText";
-            this.KompetensiText.Size = new Size(212, 21);
-            this.KompetensiText.TabIndex = 2;
-            // 
             // label36
             // 
             label36.AutoSize = true;
@@ -862,14 +870,6 @@
             label36.Size = new Size(140, 15);
             label36.TabIndex = 4;
             label36.Text = "Kompetensi Keahlian";
-            // 
-            // KelasPenerimaanText
-            // 
-            this.KelasPenerimaanText.Location = new Point(3, 24);
-            this.KelasPenerimaanText.Margin = new Padding(3, 2, 3, 2);
-            this.KelasPenerimaanText.Name = "KelasPenerimaanText";
-            this.KelasPenerimaanText.Size = new Size(212, 21);
-            this.KelasPenerimaanText.TabIndex = 1;
             // 
             // label39
             // 
@@ -907,12 +907,12 @@
             // 
             panel9.BackColor = Color.Gainsboro;
             panel9.BorderStyle = BorderStyle.FixedSingle;
+            panel9.Controls.Add(LamaBelajarText);
+            panel9.Controls.Add(NoIjazahText);
+            panel9.Controls.Add(AlasanPindahText);
+            panel9.Controls.Add(PindahanDariText);
             panel9.Controls.Add(TglIjazahDatePicker);
-            panel9.Controls.Add(this.AlasanPindahText);
             panel9.Controls.Add(label29);
-            panel9.Controls.Add(this.LamaBelajarText);
-            panel9.Controls.Add(this.NomorIjazahText);
-            panel9.Controls.Add(this.PindahanDariText);
             panel9.Controls.Add(label30);
             panel9.Controls.Add(label31);
             panel9.Controls.Add(PendidikanSebelumText);
@@ -925,11 +925,28 @@
             // 
             // AlasanPindahText
             // 
-            this.AlasanPindahText.Location = new Point(3, 234);
-            this.AlasanPindahText.Margin = new Padding(3, 2, 3, 2);
-            this.AlasanPindahText.Name = "AlasanPindahText";
-            this.AlasanPindahText.Size = new Size(212, 21);
-            this.AlasanPindahText.TabIndex = 6;
+            AlasanPindahText.Location = new Point(3, 234);
+            AlasanPindahText.Margin = new Padding(3, 2, 3, 2);
+            AlasanPindahText.Name = "AlasanPindahText";
+            AlasanPindahText.Size = new Size(212, 21);
+            AlasanPindahText.TabIndex = 6;
+            // 
+            // PindahanDariText
+            // 
+            PindahanDariText.Location = new Point(3, 194);
+            PindahanDariText.Margin = new Padding(3, 2, 3, 2);
+            PindahanDariText.Name = "PindahanDariText";
+            PindahanDariText.Size = new Size(212, 21);
+            PindahanDariText.TabIndex = 5;
+            // 
+            // TglIjazahDatePicker
+            // 
+            TglIjazahDatePicker.CustomFormat = "ddd, dd-MMM-yyyy";
+            TglIjazahDatePicker.Format = DateTimePickerFormat.Custom;
+            TglIjazahDatePicker.Location = new Point(3, 65);
+            TglIjazahDatePicker.Name = "TglIjazahDatePicker";
+            TglIjazahDatePicker.Size = new Size(212, 21);
+            TglIjazahDatePicker.TabIndex = 2;
             // 
             // label29
             // 
@@ -939,30 +956,6 @@
             label29.Size = new Size(98, 15);
             label29.TabIndex = 22;
             label29.Text = "Alasan Pindah";
-            // 
-            // LamaBelajarText
-            // 
-            this.LamaBelajarText.Location = new Point(3, 115);
-            this.LamaBelajarText.Margin = new Padding(3, 2, 3, 2);
-            this.LamaBelajarText.Name = "LamaBelajarText";
-            this.LamaBelajarText.Size = new Size(212, 21);
-            this.LamaBelajarText.TabIndex = 4;
-            // 
-            // NomorIjazahText
-            // 
-            this.NomorIjazahText.Location = new Point(3, 90);
-            this.NomorIjazahText.Margin = new Padding(3, 2, 3, 2);
-            this.NomorIjazahText.Name = "NomorIjazahText";
-            this.NomorIjazahText.Size = new Size(212, 21);
-            this.NomorIjazahText.TabIndex = 3;
-            // 
-            // PindahanDariText
-            // 
-            this.PindahanDariText.Location = new Point(3, 194);
-            this.PindahanDariText.Margin = new Padding(3, 2, 3, 2);
-            this.PindahanDariText.Name = "PindahanDariText";
-            this.PindahanDariText.Size = new Size(212, 21);
-            this.PindahanDariText.TabIndex = 5;
             // 
             // label30
             // 
@@ -1054,6 +1047,14 @@
             panel7.Name = "panel7";
             panel7.Size = new Size(228, 339);
             panel7.TabIndex = 0;
+            // 
+            // KelainanJasmaniText
+            // 
+            KelainanJasmaniText.Location = new Point(3, 111);
+            KelainanJasmaniText.Margin = new Padding(3, 2, 3, 2);
+            KelainanJasmaniText.Name = "KelainanJasmaniText";
+            KelainanJasmaniText.Size = new Size(212, 21);
+            KelainanJasmaniText.TabIndex = 2;
             // 
             // BeratBadanNumeric
             // 
@@ -1205,11 +1206,11 @@
             // 
             panel18.BackColor = Color.Gainsboro;
             panel18.BorderStyle = BorderStyle.FixedSingle;
+            panel18.Controls.Add(SeniText);
             panel18.Controls.Add(CitaCitaText);
             panel18.Controls.Add(label54);
             panel18.Controls.Add(BakatLainnyaText);
             panel18.Controls.Add(KemasyarakatanText);
-            panel18.Controls.Add(this.SeniText);
             panel18.Controls.Add(label52);
             panel18.Controls.Add(OlahRagaText);
             panel18.Controls.Add(label53);
@@ -1220,6 +1221,14 @@
             panel18.Name = "panel18";
             panel18.Size = new Size(228, 339);
             panel18.TabIndex = 0;
+            // 
+            // SeniText
+            // 
+            SeniText.Location = new Point(3, 23);
+            SeniText.Margin = new Padding(3, 2, 3, 2);
+            SeniText.Name = "SeniText";
+            SeniText.Size = new Size(212, 21);
+            SeniText.TabIndex = 1;
             // 
             // CitaCitaText
             // 
@@ -1253,14 +1262,6 @@
             KemasyarakatanText.Name = "KemasyarakatanText";
             KemasyarakatanText.Size = new Size(212, 21);
             KemasyarakatanText.TabIndex = 3;
-            // 
-            // SeniText
-            // 
-            this.SeniText.Location = new Point(3, 23);
-            this.SeniText.Margin = new Padding(3, 2, 3, 2);
-            this.SeniText.Name = "SeniText";
-            this.SeniText.Size = new Size(212, 21);
-            this.SeniText.TabIndex = 1;
             // 
             // label52
             // 
@@ -1954,22 +1955,21 @@
             toolStripStatusLabel1.Size = new Size(128, 17);
             toolStripStatusLabel1.Text = "Aktif Data : [Tidak Ada]";
             // 
-            // KelainanJasmaniText
+            // NoIjazahText
             // 
-            KelainanJasmaniText.Location = new Point(3, 111);
-            KelainanJasmaniText.Margin = new Padding(3, 2, 3, 2);
-            KelainanJasmaniText.Name = "KelainanJasmaniText";
-            KelainanJasmaniText.Size = new Size(212, 21);
-            KelainanJasmaniText.TabIndex = 2;
+            NoIjazahText.Location = new Point(3, 91);
+            NoIjazahText.Margin = new Padding(3, 2, 3, 2);
+            NoIjazahText.Name = "NoIjazahText";
+            NoIjazahText.Size = new Size(212, 21);
+            NoIjazahText.TabIndex = 3;
             // 
-            // TglIjazahDatePicker
+            // LamaBelajarText
             // 
-            TglIjazahDatePicker.CustomFormat = "ddd, dd-MMM-yyyy";
-            TglIjazahDatePicker.Format = DateTimePickerFormat.Custom;
-            TglIjazahDatePicker.Location = new Point(3, 65);
-            TglIjazahDatePicker.Name = "TglIjazahDatePicker";
-            TglIjazahDatePicker.Size = new Size(212, 21);
-            TglIjazahDatePicker.TabIndex = 2;
+            LamaBelajarText.Location = new Point(3, 116);
+            LamaBelajarText.Margin = new Padding(3, 2, 3, 2);
+            LamaBelajarText.Name = "LamaBelajarText";
+            LamaBelajarText.Size = new Size(212, 21);
+            LamaBelajarText.TabIndex = 4;
             // 
             // Form1
             // 
@@ -2213,5 +2213,13 @@
         private ToolStripStatusLabel toolStripStatusLabel1;
         private TextBox KelainanJasmaniText;
         private DateTimePicker TglIjazahDatePicker;
+        private TextBox AlasanPindahText;
+        private TextBox PindahanDariText;
+        private DateTimePicker TglDiterimaDatePicker;
+        private TextBox KompetensiText;
+        private TextBox KelasPenerimaanText;
+        private TextBox SeniText;
+        private TextBox LamaBelajarText;
+        private TextBox NoIjazahText;
     }
 }
