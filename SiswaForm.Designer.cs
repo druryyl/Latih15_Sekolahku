@@ -1,6 +1,6 @@
 ﻿namespace Latih15_Sekolahku
 {
-    partial class Form1
+    partial class SiswaForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -94,6 +94,8 @@
             panel8 = new Panel();
             label28 = new Label();
             panel9 = new Panel();
+            LamaBelajarText = new TextBox();
+            NoIjazahText = new TextBox();
             AlasanPindahText = new TextBox();
             PindahanDariText = new TextBox();
             TglIjazahDatePicker = new DateTimePicker();
@@ -198,8 +200,6 @@
             SaveWaliButton = new Button();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
-            NoIjazahText = new TextBox();
-            LamaBelajarText = new TextBox();
             TabControl1.SuspendLayout();
             ListTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ListSiswaGrid).BeginInit();
@@ -249,11 +249,12 @@
             TabControl1.Controls.Add(RiwayatTabPage);
             TabControl1.Controls.Add(PrestasiTabPage);
             TabControl1.Controls.Add(WaliTabPage);
-            TabControl1.Location = new Point(12, 13);
+            TabControl1.Location = new Point(6, 6);
             TabControl1.Margin = new Padding(3, 2, 3, 2);
             TabControl1.Name = "TabControl1";
             TabControl1.SelectedIndex = 0;
             TabControl1.Size = new Size(759, 453);
+            TabControl1.SizeMode = TabSizeMode.Fixed;
             TabControl1.TabIndex = 0;
             // 
             // ListTabPage
@@ -428,7 +429,7 @@
             label42.Name = "label42";
             label42.Size = new Size(240, 23);
             label42.TabIndex = 12;
-            label42.Text = "TEMPAT TINGGAL";
+            label42.Text = "KELUARGA";
             label42.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel12
@@ -590,7 +591,7 @@
             label41.Name = "label41";
             label41.Size = new Size(240, 23);
             label41.TabIndex = 12;
-            label41.Text = "TEMPAT TINGGAL";
+            label41.Text = "IDENTITAS";
             label41.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // NamaLengkapLabel
@@ -922,6 +923,22 @@
             panel9.Name = "panel9";
             panel9.Size = new Size(228, 339);
             panel9.TabIndex = 0;
+            // 
+            // LamaBelajarText
+            // 
+            LamaBelajarText.Location = new Point(3, 116);
+            LamaBelajarText.Margin = new Padding(3, 2, 3, 2);
+            LamaBelajarText.Name = "LamaBelajarText";
+            LamaBelajarText.Size = new Size(212, 21);
+            LamaBelajarText.TabIndex = 4;
+            // 
+            // NoIjazahText
+            // 
+            NoIjazahText.Location = new Point(3, 91);
+            NoIjazahText.Margin = new Padding(3, 2, 3, 2);
+            NoIjazahText.Name = "NoIjazahText";
+            NoIjazahText.Size = new Size(212, 21);
+            NoIjazahText.TabIndex = 3;
             // 
             // AlasanPindahText
             // 
@@ -1943,45 +1960,31 @@
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
-            statusStrip1.Location = new Point(0, 469);
+            statusStrip1.Location = new Point(0, 466);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(778, 22);
+            statusStrip1.Size = new Size(771, 22);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
+            toolStripStatusLabel1.BackColor = SystemColors.Control;
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             toolStripStatusLabel1.Size = new Size(128, 17);
             toolStripStatusLabel1.Text = "Aktif Data : [Tidak Ada]";
-            // 
-            // NoIjazahText
-            // 
-            NoIjazahText.Location = new Point(3, 91);
-            NoIjazahText.Margin = new Padding(3, 2, 3, 2);
-            NoIjazahText.Name = "NoIjazahText";
-            NoIjazahText.Size = new Size(212, 21);
-            NoIjazahText.TabIndex = 3;
-            // 
-            // LamaBelajarText
-            // 
-            LamaBelajarText.Location = new Point(3, 116);
-            LamaBelajarText.Margin = new Padding(3, 2, 3, 2);
-            LamaBelajarText.Name = "LamaBelajarText";
-            LamaBelajarText.Size = new Size(212, 21);
-            LamaBelajarText.TabIndex = 4;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(778, 491);
+            BackColor = SystemColors.AppWorkspace;
+            ClientSize = new Size(771, 488);
             Controls.Add(statusStrip1);
             Controls.Add(TabControl1);
             Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Data Induk Siswa";
             TabControl1.ResumeLayout(false);
             ListTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ListSiswaGrid).EndInit();
