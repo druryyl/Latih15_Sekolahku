@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Latih15_Sekolahku
+namespace Latih15_Sekolahku.DataIndukSiswa.Models
 {
     public class SiswaWaliModel
     {

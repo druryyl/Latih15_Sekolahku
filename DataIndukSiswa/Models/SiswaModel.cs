@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Latih15_Sekolahku
+namespace Latih15_Sekolahku.DataIndukSiswa.Models
 {
     public class SiswaModel
     {
@@ -26,7 +26,7 @@ namespace Latih15_Sekolahku
         public string NomorHpRumah { get; set; }
         public string StatusTinggal { get; set; }
         public int JarakKeSekolah { get; set; }
-        public string TransportKeSekolah {get;set; }
+        public string TransportKeSekolah { get; set; }
     }
 
 

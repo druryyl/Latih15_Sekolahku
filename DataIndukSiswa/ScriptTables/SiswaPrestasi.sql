@@ -1,0 +1,11 @@
+﻿CREATE TABLE SiswaPrestasi(
+    SiswaId INT NOT NULL DEFAULT(''),
+    Olahraga VARCHAR(50) NOT NULL DEFAULT(''),
+    Seni VARCHAR(50) NOT NULL DEFAULT(''),
+    Kemasyarakatan VARCHAR(50) NOT NULL DEFAULT(''),
+    BakatLainnya VARCHAR(50) NOT NULL DEFAULT(''),
+    CitaCita VARCHAR(50) NOT NULL DEFAULT(''),
+
+    CONSTRAINT PK_SiswaPrestasi PRIMARY KEY CLUSTERED(SiswaId)
+)
+GO

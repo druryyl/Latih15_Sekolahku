@@ -1,0 +1,18 @@
+﻿CREATE TABLE SiswaWali(
+    SiswaId INT NOT NULL DEFAULT(0),
+    JenisWali INT NOT NULL DEFAULT(0),
+    NamaLengkap VARCHAR(50) NOT NULL DEFAULT(''),
+    TempatLahir VARCHAR(50) NOT NULL DEFAULT(''),
+    TglLahir DATETIME NOT NULL DEFAULT('3000-01-01'),
+    Kewarganegaraan VARCHAR(50) NOT NULL DEFAULT(''),
+    Pendidikan VARCHAR(50) NOT NULL DEFAULT(''),
+    Pekerjaan VARCHAR(50) NOT NULL DEFAULT(''),
+    Penghasilan VARCHAR(50) NOT NULL DEFAULT(''),
+    Nik VARCHAR(50) NOT NULL DEFAULT(''),
+    NoKk VARCHAR(50) NOT NULL DEFAULT(''),
+)
+GO
+
+CREATE CLUSTERED INDEX IX_SiswaWali_SiswaId
+    ON SiswaWali (SiswaId, JenisWali)
+GO

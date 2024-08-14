@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Latih15_Sekolahku
+namespace Latih15_Sekolahku.DataIndukSiswa.Models
 {
     public class SiswaRiwayatModel
     {
         public int SiswaId { get; set; }
 
-        public int GolDarah { get; set;}
+        public int GolDarah { get; set; }
         public string SakitPernahDiderita { get; set; }
         public string KelainanJasmani { get; set; }
         public int TinggiBadan { get; set; }
@@ -24,5 +24,9 @@ namespace Latih15_Sekolahku
 
         public string PindahanDari { get; set; }
         public string AlasanPindah { get; set; }
+
+        public string KelasPenerimaan { get; set; }
+        public string KompetensiKeahlian { get; set; }
+        public DateTime TglDiterima { get; set; }
     }
 }
