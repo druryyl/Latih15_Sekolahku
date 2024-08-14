@@ -7,7 +7,7 @@
     Kewarganegaraan VARCHAR(50) NOT NULL DEFAULT(''),
     Pendidikan VARCHAR(50) NOT NULL DEFAULT(''),
     Pekerjaan VARCHAR(50) NOT NULL DEFAULT(''),
-    Penghasilan VARCHAR(50) NOT NULL DEFAULT(''),
+    Penghasilan DECIMAL(18,0) NOT NULL DEFAULT(0),
     Nik VARCHAR(50) NOT NULL DEFAULT(''),
     NoKk VARCHAR(50) NOT NULL DEFAULT(''),
 )

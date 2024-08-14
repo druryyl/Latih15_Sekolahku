@@ -9,7 +9,7 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Models
     public class SiswaWaliModel
     {
         public int SiswaId { get; set; }
-        public string JenisWali { get; set; }
+        public int JenisWali { get; set; }
         public string NamaLengkap { get; set; }
         public string TempatLahir { get; set; }
         public DateTime TglLahir { get; set; }
