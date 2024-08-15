@@ -23,6 +23,7 @@ public partial class SiswaForm : Form
 
         RegisterControlEvent();
         InitCombo();
+        InitGrid();
     }
 
     private void RegisterControlEvent()
@@ -56,9 +57,22 @@ public partial class SiswaForm : Form
         StatusTinggalCombo.Items.Add("DI ASRAMA");
         StatusTinggalCombo.DropDownStyle = ComboBoxStyle.DropDownList;
         StatusTinggalCombo.SelectedIndex = 0;
-
     }
 
+    private void InitGrid()
+    {
+        BeasiswaGrid.Rows.Clear();
+        BeasiswaGrid.Columns.Clear();
+        BeasiswaGrid.Columns.Add("Tahun", "Tahun");
+        BeasiswaGrid.Columns.Add("Kelas", "Kelas");
+        BeasiswaGrid.Columns.Add("Penyedia", "Penyedia");
+
+        BeasiswaGrid.Columns["Tahun"].Width = 50;
+        BeasiswaGrid.Columns["Kelas"].Width = 50;
+        BeasiswaGrid.Columns["Penyedia"].Width = 200;
+
+        BeasiswaGrid.Rows.Add();
+    }
 
     private void SaveButton_Click(object? sender, EventArgs e)
     {
@@ -72,6 +86,11 @@ public partial class SiswaForm : Form
         SaveSiswaPrestasi(siswaId);
         SaveSiswaBeasiswa(siswaId);
         SaveSiswaWali(siswaId);
+    }
+
+    private void GetSiswa(int siswaId)
+    {
+
     }
 
     private int SaveSiswaPersonal()
@@ -172,10 +191,12 @@ public partial class SiswaForm : Form
             {
                 SiswaId = siswaId,
                 NoUrut = listBeasiswa.Count + 1,
-                Kelas = row.Cells["Kelas"].Value.ToString() ?? string.Empty,
-                Tahun = row.Cells["Tahun"].Value.ToString() ?? string.Empty,
-                PenyediaBeasiswa = row.Cells["PenyandangDana"].Value.ToString() ?? string.Empty
+                Kelas = row.Cells["Kelas"].Value?.ToString() ?? string.Empty,
+                Tahun = row.Cells["Tahun"].Value?.ToString() ?? string.Empty,
+                PenyediaBeasiswa = row.Cells["Penyedia"].Value?.ToString() ?? string.Empty
             };
+            if ($"{newItem.Kelas}{newItem.Tahun}" == string.Empty)
+                continue;
             listBeasiswa.Add(newItem);
         }
         _siswaBeasiswaDal.Insert(listBeasiswa);
@@ -369,5 +390,5 @@ public class BeasiswaDto
     public int No { get; set; }
     public string Tahun { get; set; }
     public string Kelas { get; set; }
-    public string PenyandangDana { get; set; }
+    public string Penyedia { get; set; }
 }
