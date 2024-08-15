@@ -187,7 +187,7 @@
             NikAyahText = new TextBox();
             label49 = new Label();
             PendidikanAyahText = new TextBox();
-            AsingRadio = new RadioButton();
+            AsingAyahRadio = new RadioButton();
             WniAyahRadio = new RadioButton();
             TglLahirAyahDatePicker = new DateTimePicker();
             TempatLahirAyahText = new TextBox();
@@ -1781,7 +1781,7 @@
             panel19.Controls.Add(NikAyahText);
             panel19.Controls.Add(label49);
             panel19.Controls.Add(PendidikanAyahText);
-            panel19.Controls.Add(AsingRadio);
+            panel19.Controls.Add(AsingAyahRadio);
             panel19.Controls.Add(WniAyahRadio);
             panel19.Controls.Add(TglLahirAyahDatePicker);
             panel19.Controls.Add(TempatLahirAyahText);
@@ -1854,16 +1854,16 @@
             PendidikanAyahText.Size = new Size(212, 21);
             PendidikanAyahText.TabIndex = 6;
             // 
-            // AsingRadio
+            // AsingAyahRadio
             // 
-            AsingRadio.AutoSize = true;
-            AsingRadio.Location = new Point(62, 117);
-            AsingRadio.Name = "AsingRadio";
-            AsingRadio.Size = new Size(60, 19);
-            AsingRadio.TabIndex = 5;
-            AsingRadio.TabStop = true;
-            AsingRadio.Text = "Asing";
-            AsingRadio.UseVisualStyleBackColor = true;
+            AsingAyahRadio.AutoSize = true;
+            AsingAyahRadio.Location = new Point(62, 117);
+            AsingAyahRadio.Name = "AsingAyahRadio";
+            AsingAyahRadio.Size = new Size(60, 19);
+            AsingAyahRadio.TabIndex = 5;
+            AsingAyahRadio.TabStop = true;
+            AsingAyahRadio.Text = "Asing";
+            AsingAyahRadio.UseVisualStyleBackColor = true;
             // 
             // WniAyahRadio
             // 
@@ -2138,7 +2138,7 @@
         private DateTimePicker dateTimePicker2;
         private Panel panel16;
         private Panel panel19;
-        private RadioButton AsingRadio;
+        private RadioButton AsingAyahRadio;
         private RadioButton WniAyahRadio;
         private DateTimePicker TglLahirAyahDatePicker;
         private TextBox TempatLahirAyahText;

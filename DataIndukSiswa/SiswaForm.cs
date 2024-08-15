@@ -24,15 +24,12 @@ public partial class SiswaForm : Form
         RegisterControlEvent();
         InitCombo();
         InitGrid();
+
+        RefreshListData();
+
     }
 
-    private void RegisterControlEvent()
-    {
-        RefreshButton.Click += RefreshButton_Click;
-        NewButton.Click += NewButton_Click;
-        SavePersonalButton.Click += SaveButton_Click;
-    }
-
+    #region INIT-PROCEDURE
     private void InitCombo()
     {
         AgamaCombo.Items.Add("ISLAM");
@@ -73,12 +70,57 @@ public partial class SiswaForm : Form
 
         BeasiswaGrid.Rows.Add();
     }
+    #endregion
+
+    #region CONTROL-EVENT
+    private void RegisterControlEvent()
+    {
+        RefreshButton.Click += RefreshButton_Click;
+        NewButton.Click += NewButton_Click;
+        SavePersonalButton.Click += SaveButton_Click;
+        ListSiswaGrid.CellDoubleClick += ListSiswaGrid_CellDoubleClick;
+    }
+
+    private void ListSiswaGrid_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+    {
+        var siswaIdstr = ListSiswaGrid.CurrentRow.Cells["SiswaId"].Value.ToString();
+        if (siswaIdstr is null)
+            return;
+        var siswaId = Convert.ToInt32(siswaIdstr);
+        GetSiswa(siswaId);
+        SiswaTabControl.SelectedIndex = 1;
+    }
 
     private void SaveButton_Click(object? sender, EventArgs e)
     {
         SaveSiswa();
+        RefreshListData();
+    }
+    
+    private void NewButton_Click(object? sender, EventArgs e)
+    {
+        //  jika masih ada data baru, konfirmasikan ke user
+        var siswaId = SiswaIdText.Text;
+        var siswaName = NamaLengkapText.Text;
+        if (siswaId == string.Empty && siswaName != string.Empty)
+        {
+            var result = MessageBox.Show("Buat data baru??", "Konfirmasi", MessageBoxButtons.YesNoCancel);
+            if (result != DialogResult.Yes)
+                return;
+        }
+
+        ClearInput();
+        SiswaTabControl.SelectedTab = PersonalTabPage;
+        NamaLengkapText.Focus();
     }
 
+    private void RefreshButton_Click(object? sender, EventArgs e)
+    {
+        RefreshListData();
+    }
+    #endregion
+
+    #region SAVE SISWA
     private void SaveSiswa()
     {
         var siswaId = SaveSiswaPersonal();
@@ -86,11 +128,6 @@ public partial class SiswaForm : Form
         SaveSiswaPrestasi(siswaId);
         SaveSiswaBeasiswa(siswaId);
         SaveSiswaWali(siswaId);
-    }
-
-    private void GetSiswa(int siswaId)
-    {
-
     }
 
     private int SaveSiswaPersonal()
@@ -185,7 +222,7 @@ public partial class SiswaForm : Form
     {
         var listBeasiswa = new List<SiswaBeasiswaModel>();
         _siswaBeasiswaDal.Delete(siswaId);
-        foreach(DataGridViewRow row in BeasiswaGrid.Rows)
+        foreach (DataGridViewRow row in BeasiswaGrid.Rows)
         {
             var newItem = new SiswaBeasiswaModel
             {
@@ -256,29 +293,184 @@ public partial class SiswaForm : Form
         _siswaWaliDal.Delete(siswaId);
         _siswaWaliDal.Insert(listWali);
     }
+    #endregion
 
-    private void NewButton_Click(object? sender, EventArgs e)
+    #region GET SISWA
+    private void GetSiswa(int siswaId)
     {
-        //  jika masih ada data baru, konfirmasikan ke user
-        var siswaId = SiswaIdText.Text;
-        var siswaName = NamaLengkapText.Text;
-        if (siswaId == string.Empty && siswaName != string.Empty)
+        ClearInput();
+        SiswaIdText.Text = siswaId.ToString();
+        GetSiswaPersonal(siswaId);
+        GetSiswaRiwayat(siswaId);
+        GetSiswaPrestasi(siswaId);
+        GetSiswaBeasiswa(siswaId);
+        GetSiswaWali(siswaId);
+    }
+
+    private void GetSiswaPersonal(int siswaId)
+    {
+        var siswaPersonal = _siswaDal.GetData(siswaId);
+        if (siswaPersonal is null)
         {
-            var result = MessageBox.Show("Buat data baru??", "Konfirmasi", MessageBoxButtons.YesNoCancel);
-            if (result != DialogResult.Yes)
-                return;
+            MessageBox.Show("Data not found");
+            return;
+        }
+        NamaLengkapText.Text = siswaPersonal.NamaLengkap;
+        PanggilanText.Text = siswaPersonal.NamaPanggilan;
+        TempatLahirText.Text = siswaPersonal.TempatLahir;
+        TglLahirDatePicker.Value = siswaPersonal.TanggalLahir;
+
+        if (siswaPersonal.Gender == 0)
+            PriaRadio.Checked = true;
+        else
+            WanitaRadio.Checked = true;
+
+        foreach (var item in AgamaCombo.Items)
+            if (item.ToString() == siswaPersonal.Agama)
+                AgamaCombo.SelectedItem = item;
+
+        WargaNegaraText.Text = siswaPersonal.WargaNegara;
+        AnakKeNumeric.Value = siswaPersonal.AnakKe;
+        JumSaudaraKandungNumeric.Value = siswaPersonal.JumSaudaraKandung;
+        JumSaudaraAngkatNumeric.Value = siswaPersonal.JumSaudaraAngkat;
+        JumSaudaraTiriNumeric.Value = siswaPersonal.JumSaudaraTiri;
+
+        foreach (var item in KeberadaanOrtuCombo.Items)
+            if (item.ToString() == siswaPersonal.KeberadaanOrtu)
+                KeberadaanOrtuCombo.SelectedItem = item;
+
+        BahasaText.Text = siswaPersonal.BahasaSehariHari;
+        AlamatSiswaText.Text = siswaPersonal.AlamatSiswa;
+        NomorHpSiswaText.Text = siswaPersonal.NomorHpRumah;
+
+        foreach (var item in StatusTinggalCombo.Items)
+            if (item.ToString() == siswaPersonal.StatusTinggal)
+                StatusTinggalCombo.SelectedItem = item;
+
+        JarakSekolahNumeric.Value = siswaPersonal.JarakKeSekolah;
+        TransportasiText.Text = siswaPersonal.TransportKeSekolah;
+
+    }
+
+    private void GetSiswaRiwayat(int siswaId)
+    {
+        var siswaRiwayat = _siswaRiwayatDal.GetData(siswaId);
+        if (siswaRiwayat is null)
+            return;
+
+        if (siswaRiwayat.GolDarah == "A") GolDarahARadio.Checked = true;
+        if (siswaRiwayat.GolDarah == "B") GolDarahBRadio.Checked = true;
+        if (siswaRiwayat.GolDarah == "AB") GolDarahABRadio.Checked = true;
+        if (siswaRiwayat.GolDarah == "O") GolDarahORadio.Checked = true;
+
+        SakitDideritaText.Text = siswaRiwayat.SakitPernahDiderita;
+        KelainanJasmaniText.Text = siswaRiwayat.KelainanJasmani;
+        TinggiBadanNumeric.Value = siswaRiwayat.TinggiBadan;
+        BeratBadanNumeric.Value = siswaRiwayat.BeratBadan;
+
+        PendidikanSebelumText.Text = siswaRiwayat.PendidikanSebelumnya;
+        TglIjazahDatePicker.Value = siswaRiwayat.TglIjazah;
+        NoIjazahText.Text = siswaRiwayat.NoIjazah;
+        LamaBelajarText.Text = siswaRiwayat.LamaBelajar;
+
+        PindahanDariText.Text = siswaRiwayat.PindahanDari;
+        AlasanPindahText.Text = siswaRiwayat.AlasanPindah;
+        KelasPenerimaanText.Text = siswaRiwayat.KelasPenerimaan;
+        KompetensiText.Text = siswaRiwayat.KompetensiKeahlian;
+        TglDiterimaDatePicker.Value = siswaRiwayat.TglDiterima;
+
+    }
+
+    private void GetSiswaPrestasi(int siswaId)
+    {
+        var siswaPres = _siswaPrestasiDal.GetData(siswaId);
+        if (siswaPres is null)
+            return;
+
+        SeniText.Text = siswaPres.Seni;
+        OlahRagaText.Text = siswaPres.Olahraga;
+        KemasyarakatanText.Text = siswaPres.Kemasyarakatan;
+        BakatLainnyaText.Text = siswaPres.BakatLainnya;
+        CitaCitaText.Text = siswaPres.CitaCita;
+    }
+
+    private void GetSiswaBeasiswa(int siswaId)
+    {
+        var listBea = _siswaBeasiswaDal.ListData(siswaId);
+        if (listBea is null)
+            return;
+
+        var listDto = listBea
+            .Select(x => new BeasiswaDto
+            {
+                No = x.NoUrut,
+                Kelas = x.Kelas,
+                Tahun = x.Tahun,
+                Penyedia = x.PenyediaBeasiswa
+            });
+
+        BeasiswaGrid.DataSource = listDto;
+    }
+
+    private void GetSiswaWali(int siswaId)
+    {
+        var listWali = _siswaWaliDal.ListData(siswaId);
+        if (listWali is null) return;
+
+        var ayah = listWali.FirstOrDefault(x => x.JenisWali == 0);
+        if (ayah is not null)
+        {
+            NamaLengkapAyahText.Text = ayah.NamaLengkap;
+            TempatLahirAyahText.Text = ayah.TempatLahir;
+            TglLahirAyahDatePicker.Value = ayah.TglLahir;
+            if (ayah.Kewarganegaraan == 0)
+                WniAyahRadio.Checked = true;
+            else
+                AsingAyahRadio.Checked = true;
+            PendidikanAyahText.Text = ayah.Pendidikan;
+            PekerjaanAyahText.Text = ayah.Pekerjaan;
+            PenghasilanAyahNumeric.Value = ayah.Penghasilan;
+            NikAyahText.Text = ayah.Nik;
+            NoKkAyahText.Text = ayah.NoKk;
         }
 
-        ClearInput();
-        SiswaTabControl.SelectedTab = PersonalTabPage;
-        NamaLengkapText.Focus();
-    }
+        var ibu = listWali.FirstOrDefault(x => x.JenisWali == 1);
+        if (ibu is not null)
+        {
+            NamaLengkapIbuText.Text = ibu.NamaLengkap;
+            TempatLahirIbuText.Text = ibu.TempatLahir;
+            TglLahirIbuDatePicker.Value = ibu.TglLahir;
+            if (ayah.Kewarganegaraan == 0)
+                WniIbuRadio.Checked = true;
+            else
+                AsingIbuRadio.Checked = true;
+            PendidikanIbuText.Text = ibu.Pendidikan;
+            PekerjaanIbuText.Text = ibu.Pekerjaan;
+            PenghasilanIbuNumeric.Value = ibu.Penghasilan;
+            NikIbuText.Text = ibu.Nik;
+            NoKkIbuText.Text = ibu.NoKk;
+        }
 
-    private void RefreshButton_Click(object? sender, EventArgs e)
-    {
-        RefreshListData();
+        var wali = listWali.FirstOrDefault(x => x.JenisWali == 1);
+        if (wali is not null)
+        {
+            NamaLengkapWaliText.Text = wali.NamaLengkap;
+            TempatLahirWaliText.Text = wali.TempatLahir;
+            TglLahirWaliDatePicker.Value = wali.TglLahir;
+            if (wali.Kewarganegaraan == 0)
+                WniWaliRadio.Checked = true;
+            else
+                AsingWaliRadio.Checked = true;
+            PendidikanWaliText.Text = wali.Pendidikan;
+            PekerjaanWaliText.Text = wali.Pekerjaan;
+            PenghasilanWaliNumeric.Value = wali.Penghasilan;
+            NikWaliText.Text = wali.Nik;
+            NoKkWaliText.Text = wali.NoKk;
+        }
     }
+    #endregion
 
+    #region HELPER
     private void ClearInput()
     {
         //  Personal
@@ -313,16 +505,16 @@ public partial class SiswaForm : Form
         LamaBelajarText.Clear();
         PindahanDariText.Clear();
         AlasanPindahText.Clear();
-        KelasPenerimaanText .Clear();
+        KelasPenerimaanText.Clear();
         KompetensiText.Clear();
         TglDiterimaDatePicker.Value = new DateTime(3000, 1, 1);
 
         //  Prestasi
         SeniText.Clear();
         OlahRagaText.Clear();
-        KemasyarakatanText .Clear();
-        BakatLainnyaText .Clear();
-        CitaCitaText .Clear();
+        KemasyarakatanText.Clear();
+        BakatLainnyaText.Clear();
+        CitaCitaText.Clear();
         BeasiswaGrid.DataSource = new List<BeasiswaDto>();
 
         //  Wali
@@ -356,6 +548,8 @@ public partial class SiswaForm : Form
         PenghasilanWaliNumeric.Value = 0;
         NikWaliText.Clear();
         NoKkWaliText.Clear();
+
+        BeasiswaGrid.Rows.Add();
     }
 
     private void RefreshListData()
@@ -374,6 +568,8 @@ public partial class SiswaForm : Form
         ListSiswaGrid.DataSource = dataSource;
         ListSiswaGrid.Refresh();
     }
+    #endregion
+
 }
 
 public class ListSiswaDto

@@ -63,9 +63,9 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
         {
             const string sql = @"
                 SELECT
-                    SiswaId, JenisWali, NamaLurator, TempatLahir,
+                    SiswaId, JenisWali, NamaLengkap, TempatLahir,
                     TglLahir, Kewarganegaraan, Pendidikan,
-                    Pekerjaan, Pengayah, Nik, NoKk
+                    Pekerjaan, Penghasilan, Nik, NoKk
                 FROM
                     SiswaWali
                 WHERE
