@@ -1,6 +1,6 @@
 ﻿CREATE TABLE SiswaRiwayat(
     SiswaId INT NOT NULL DEFAULT(0),
-    GolDarah INT NOT NULL DEFAULT(0),
+    GolDarah VARCHAR(50) NOT NULL DEFAULT(0),
     SakitPernahDiderita VARCHAR(50) NOT NULL DEFAULT(''),
     KelainanJasmani VARCHAR(50) NOT NULL DEFAULT(''),
     TinggiBadan INT NOT NULL DEFAULT(''),

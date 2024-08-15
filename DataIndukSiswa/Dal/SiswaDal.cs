@@ -17,13 +17,13 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
                     AnakKe, JumSaudaraKandung, JumSaudaraTiri, JumSaudaraAngkat,
                     AlamatSiswa, NomorHpRumah, StatusTinggal,
                     JarakKeSekolah, TransportKeSekolah)
+                OUTPUT INSERTED.SiswaId
                 VALUES (
                     @NamaLengkap, @NamaPanggilan, @TempatLahir,
                     @TanggalLahir, @Gender, @Agama, @WargaNegara,
                     @AnakKe, @JumSaudaraKandung, @JumSaudaraTiri, @JumSaudaraAngkat,
                     @AlamatSiswa, @NomorHpRumah, @StatusTinggal,
-                    @JarakKeSekolah, @TransportKeSekolah);
-                SELECT CAST(SCOPE_IDENTITY() as int;";
+                    @JarakKeSekolah, @TransportKeSekolah)";
 
             var dp = new DynamicParameters();
             dp.Add("@NamaLengkap", siswa.NamaLengkap, DbType.String);
@@ -111,7 +111,7 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
             conn.Execute(sql, dp);
         }
 
-        public SiswaModel GetData(int siswaId)
+        public SiswaModel? GetData(int siswaId)
         {
             const string sql = @"
                 SELECT
@@ -129,7 +129,7 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
             dp.Add("@SiswaId", siswaId, DbType.Int16);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.QuerySingle<SiswaModel>(sql, dp);
+            return conn.QueryFirstOrDefault<SiswaModel>(sql, dp);
         }
 
         public IEnumerable<SiswaModel> ListData()

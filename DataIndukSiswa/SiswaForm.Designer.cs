@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TabControl1 = new TabControl();
+            SiswaTabControl = new TabControl();
             ListTabPage = new TabPage();
+            RefreshButton = new Button();
             NewButton = new Button();
             ListSiswaGrid = new DataGridView();
             PersonalTabPage = new TabPage();
@@ -62,7 +63,6 @@
             label2 = new Label();
             label9 = new Label();
             label41 = new Label();
-            NamaLengkapLabel = new Label();
             SavePersonalButton = new Button();
             panel4 = new Panel();
             label13 = new Label();
@@ -70,7 +70,7 @@
             JarakSekolahNumeric = new NumericUpDown();
             StatusTinggalCombo = new ComboBox();
             label18 = new Label();
-            NomorHpSiswa = new TextBox();
+            NomorHpSiswaText = new TextBox();
             TransportasiText = new TextBox();
             label19 = new Label();
             label20 = new Label();
@@ -161,11 +161,11 @@
             label66 = new Label();
             panel3 = new Panel();
             panel14 = new Panel();
-            PenghasilIbuNumeric = new NumericUpDown();
+            PenghasilanIbuNumeric = new NumericUpDown();
             label40 = new Label();
             NoKkIbuText = new TextBox();
             label43 = new Label();
-            NikIBuText = new TextBox();
+            NikIbuText = new TextBox();
             label44 = new Label();
             PendidikanIbuText = new TextBox();
             AsingIbuRadio = new RadioButton();
@@ -188,7 +188,7 @@
             label49 = new Label();
             PendidikanAyahText = new TextBox();
             AsingRadio = new RadioButton();
-            WniRadio = new RadioButton();
+            WniAyahRadio = new RadioButton();
             TglLahirAyahDatePicker = new DateTimePicker();
             TempatLahirAyahText = new TextBox();
             label48 = new Label();
@@ -200,7 +200,7 @@
             SaveWaliButton = new Button();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
-            TabControl1.SuspendLayout();
+            SiswaTabControl.SuspendLayout();
             ListTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ListSiswaGrid).BeginInit();
             PersonalTabPage.SuspendLayout();
@@ -235,30 +235,31 @@
             ((System.ComponentModel.ISupportInitialize)PenghasilanWaliNumeric).BeginInit();
             panel3.SuspendLayout();
             panel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)PenghasilIbuNumeric).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PenghasilanIbuNumeric).BeginInit();
             panel16.SuspendLayout();
             panel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PenghasilanAyahNumeric).BeginInit();
             statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // TabControl1
+            // SiswaTabControl
             // 
-            TabControl1.Controls.Add(ListTabPage);
-            TabControl1.Controls.Add(PersonalTabPage);
-            TabControl1.Controls.Add(RiwayatTabPage);
-            TabControl1.Controls.Add(PrestasiTabPage);
-            TabControl1.Controls.Add(WaliTabPage);
-            TabControl1.Location = new Point(6, 6);
-            TabControl1.Margin = new Padding(3, 2, 3, 2);
-            TabControl1.Name = "TabControl1";
-            TabControl1.SelectedIndex = 0;
-            TabControl1.Size = new Size(759, 453);
-            TabControl1.SizeMode = TabSizeMode.Fixed;
-            TabControl1.TabIndex = 0;
+            SiswaTabControl.Controls.Add(ListTabPage);
+            SiswaTabControl.Controls.Add(PersonalTabPage);
+            SiswaTabControl.Controls.Add(RiwayatTabPage);
+            SiswaTabControl.Controls.Add(PrestasiTabPage);
+            SiswaTabControl.Controls.Add(WaliTabPage);
+            SiswaTabControl.Location = new Point(6, 6);
+            SiswaTabControl.Margin = new Padding(3, 2, 3, 2);
+            SiswaTabControl.Name = "SiswaTabControl";
+            SiswaTabControl.SelectedIndex = 0;
+            SiswaTabControl.Size = new Size(759, 453);
+            SiswaTabControl.SizeMode = TabSizeMode.Fixed;
+            SiswaTabControl.TabIndex = 0;
             // 
             // ListTabPage
             // 
+            ListTabPage.Controls.Add(RefreshButton);
             ListTabPage.Controls.Add(NewButton);
             ListTabPage.Controls.Add(ListSiswaGrid);
             ListTabPage.Location = new Point(4, 24);
@@ -269,6 +270,16 @@
             ListTabPage.TabIndex = 0;
             ListTabPage.Text = "List Data";
             ListTabPage.UseVisualStyleBackColor = true;
+            // 
+            // RefreshButton
+            // 
+            RefreshButton.Location = new Point(6, 397);
+            RefreshButton.Margin = new Padding(3, 2, 3, 2);
+            RefreshButton.Name = "RefreshButton";
+            RefreshButton.Size = new Size(75, 22);
+            RefreshButton.TabIndex = 2;
+            RefreshButton.Text = "Refresh";
+            RefreshButton.UseVisualStyleBackColor = true;
             // 
             // NewButton
             // 
@@ -294,7 +305,6 @@
             // 
             PersonalTabPage.Controls.Add(panel13);
             PersonalTabPage.Controls.Add(panel12);
-            PersonalTabPage.Controls.Add(NamaLengkapLabel);
             PersonalTabPage.Controls.Add(SavePersonalButton);
             PersonalTabPage.Controls.Add(panel4);
             PersonalTabPage.Controls.Add(NikSiswaText);
@@ -594,17 +604,6 @@
             label41.Text = "IDENTITAS";
             label41.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // NamaLengkapLabel
-            // 
-            NamaLengkapLabel.BorderStyle = BorderStyle.FixedSingle;
-            NamaLengkapLabel.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            NamaLengkapLabel.Location = new Point(502, 12);
-            NamaLengkapLabel.Name = "NamaLengkapLabel";
-            NamaLengkapLabel.Size = new Size(240, 38);
-            NamaLengkapLabel.TabIndex = 10;
-            NamaLengkapLabel.Text = "Nama Lengkap";
-            NamaLengkapLabel.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // SavePersonalButton
             // 
             SavePersonalButton.Location = new Point(668, 392);
@@ -645,7 +644,7 @@
             panel6.Controls.Add(JarakSekolahNumeric);
             panel6.Controls.Add(StatusTinggalCombo);
             panel6.Controls.Add(label18);
-            panel6.Controls.Add(NomorHpSiswa);
+            panel6.Controls.Add(NomorHpSiswaText);
             panel6.Controls.Add(TransportasiText);
             panel6.Controls.Add(label19);
             panel6.Controls.Add(label20);
@@ -682,13 +681,13 @@
             label18.TabIndex = 6;
             label18.Text = "Status Tinggal";
             // 
-            // NomorHpSiswa
+            // NomorHpSiswaText
             // 
-            NomorHpSiswa.Location = new Point(3, 65);
-            NomorHpSiswa.Margin = new Padding(3, 2, 3, 2);
-            NomorHpSiswa.Name = "NomorHpSiswa";
-            NomorHpSiswa.Size = new Size(212, 21);
-            NomorHpSiswa.TabIndex = 2;
+            NomorHpSiswaText.Location = new Point(3, 65);
+            NomorHpSiswaText.Margin = new Padding(3, 2, 3, 2);
+            NomorHpSiswaText.Name = "NomorHpSiswaText";
+            NomorHpSiswaText.Size = new Size(212, 21);
+            NomorHpSiswaText.TabIndex = 2;
             // 
             // TransportasiText
             // 
@@ -764,6 +763,7 @@
             SiswaIdText.Location = new Point(6, 28);
             SiswaIdText.Margin = new Padding(3, 2, 3, 2);
             SiswaIdText.Name = "SiswaIdText";
+            SiswaIdText.ReadOnly = true;
             SiswaIdText.Size = new Size(241, 21);
             SiswaIdText.TabIndex = 1;
             // 
@@ -1585,11 +1585,11 @@
             // 
             panel14.BackColor = Color.Gainsboro;
             panel14.BorderStyle = BorderStyle.FixedSingle;
-            panel14.Controls.Add(PenghasilIbuNumeric);
+            panel14.Controls.Add(PenghasilanIbuNumeric);
             panel14.Controls.Add(label40);
             panel14.Controls.Add(NoKkIbuText);
             panel14.Controls.Add(label43);
-            panel14.Controls.Add(NikIBuText);
+            panel14.Controls.Add(NikIbuText);
             panel14.Controls.Add(label44);
             panel14.Controls.Add(PendidikanIbuText);
             panel14.Controls.Add(AsingIbuRadio);
@@ -1607,12 +1607,12 @@
             panel14.Size = new Size(228, 339);
             panel14.TabIndex = 13;
             // 
-            // PenghasilIbuNumeric
+            // PenghasilanIbuNumeric
             // 
-            PenghasilIbuNumeric.Location = new Point(3, 237);
-            PenghasilIbuNumeric.Name = "PenghasilIbuNumeric";
-            PenghasilIbuNumeric.Size = new Size(216, 21);
-            PenghasilIbuNumeric.TabIndex = 8;
+            PenghasilanIbuNumeric.Location = new Point(3, 237);
+            PenghasilanIbuNumeric.Name = "PenghasilanIbuNumeric";
+            PenghasilanIbuNumeric.Size = new Size(216, 21);
+            PenghasilanIbuNumeric.TabIndex = 8;
             // 
             // label40
             // 
@@ -1640,13 +1640,13 @@
             label43.TabIndex = 16;
             label43.Text = "NIK - No.KK";
             // 
-            // NikIBuText
+            // NikIbuText
             // 
-            NikIBuText.Location = new Point(3, 286);
-            NikIBuText.Margin = new Padding(3, 2, 3, 2);
-            NikIBuText.Name = "NikIBuText";
-            NikIBuText.Size = new Size(212, 21);
-            NikIBuText.TabIndex = 9;
+            NikIbuText.Location = new Point(3, 286);
+            NikIbuText.Margin = new Padding(3, 2, 3, 2);
+            NikIbuText.Name = "NikIbuText";
+            NikIbuText.Size = new Size(212, 21);
+            NikIbuText.TabIndex = 9;
             // 
             // label44
             // 
@@ -1782,7 +1782,7 @@
             panel19.Controls.Add(label49);
             panel19.Controls.Add(PendidikanAyahText);
             panel19.Controls.Add(AsingRadio);
-            panel19.Controls.Add(WniRadio);
+            panel19.Controls.Add(WniAyahRadio);
             panel19.Controls.Add(TglLahirAyahDatePicker);
             panel19.Controls.Add(TempatLahirAyahText);
             panel19.Controls.Add(label48);
@@ -1865,16 +1865,16 @@
             AsingRadio.Text = "Asing";
             AsingRadio.UseVisualStyleBackColor = true;
             // 
-            // WniRadio
+            // WniAyahRadio
             // 
-            WniRadio.AutoSize = true;
-            WniRadio.Location = new Point(3, 117);
-            WniRadio.Name = "WniRadio";
-            WniRadio.Size = new Size(46, 19);
-            WniRadio.TabIndex = 4;
-            WniRadio.TabStop = true;
-            WniRadio.Text = "WNI";
-            WniRadio.UseVisualStyleBackColor = true;
+            WniAyahRadio.AutoSize = true;
+            WniAyahRadio.Location = new Point(3, 117);
+            WniAyahRadio.Name = "WniAyahRadio";
+            WniAyahRadio.Size = new Size(46, 19);
+            WniAyahRadio.TabIndex = 4;
+            WniAyahRadio.TabStop = true;
+            WniAyahRadio.Text = "WNI";
+            WniAyahRadio.UseVisualStyleBackColor = true;
             // 
             // TglLahirAyahDatePicker
             // 
@@ -1969,23 +1969,24 @@
             // toolStripStatusLabel1
             // 
             toolStripStatusLabel1.BackColor = SystemColors.Control;
+            toolStripStatusLabel1.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point);
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(128, 17);
+            toolStripStatusLabel1.Size = new Size(175, 17);
             toolStripStatusLabel1.Text = "Aktif Data : [Tidak Ada]";
             // 
-            // Form1
+            // SiswaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
             ClientSize = new Size(771, 488);
             Controls.Add(statusStrip1);
-            Controls.Add(TabControl1);
+            Controls.Add(SiswaTabControl);
             Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "Form1";
+            Name = "SiswaForm";
             Text = "Data Induk Siswa";
-            TabControl1.ResumeLayout(false);
+            SiswaTabControl.ResumeLayout(false);
             ListTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ListSiswaGrid).EndInit();
             PersonalTabPage.ResumeLayout(false);
@@ -2030,7 +2031,7 @@
             panel3.ResumeLayout(false);
             panel14.ResumeLayout(false);
             panel14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PenghasilIbuNumeric).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PenghasilanIbuNumeric).EndInit();
             panel16.ResumeLayout(false);
             panel19.ResumeLayout(false);
             panel19.PerformLayout();
@@ -2043,7 +2044,7 @@
 
         #endregion
 
-        private TabControl TabControl1;
+        private TabControl SiswaTabControl;
         private TabPage ListTabPage;
         private TabPage PersonalTabPage;
         private TabPage RiwayatTabPage;
@@ -2060,7 +2061,7 @@
         private NumericUpDown JarakSekolahNumeric;
         private ComboBox StatusTinggalCombo;
         private Label label18;
-        private TextBox NomorHpSiswa;
+        private TextBox NomorHpSiswaText;
         private TextBox TransportasiText;
         private Label label19;
         private Label label20;
@@ -2068,7 +2069,6 @@
         private Label label21;
         private Label label22;
         private Button SavePersonalButton;
-        private Label NamaLengkapLabel;
         private Panel panel13;
         private Panel panel2;
         private NumericUpDown JumSaudaraTiriNumeric;
@@ -2139,7 +2139,7 @@
         private Panel panel16;
         private Panel panel19;
         private RadioButton AsingRadio;
-        private RadioButton WniRadio;
+        private RadioButton WniAyahRadio;
         private DateTimePicker TglLahirAyahDatePicker;
         private TextBox TempatLahirAyahText;
         private Label label48;
@@ -2175,11 +2175,11 @@
         private Label label66;
         private Panel panel3;
         private Panel panel14;
-        private NumericUpDown PenghasilIbuNumeric;
+        private NumericUpDown PenghasilanIbuNumeric;
         private Label label40;
         private TextBox NoKkIbuText;
         private Label label43;
-        private TextBox NikIBuText;
+        private TextBox NikIbuText;
         private Label label44;
         private TextBox PendidikanIbuText;
         private RadioButton AsingIbuRadio;
@@ -2224,5 +2224,6 @@
         private TextBox SeniText;
         private TextBox LamaBelajarText;
         private TextBox NoIjazahText;
+        private Button RefreshButton;
     }
 }

@@ -75,7 +75,7 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
             conn.Execute(sql, dp);
         }
 
-        public SiswaPrestasiModel GetData(int siswaId)
+        public SiswaPrestasiModel? GetData(int siswaId)
         {
             const string sql = @"
                 SELECT
@@ -90,7 +90,7 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
             dp.Add("@SiswaId", siswaId, DbType.Int32);
          
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.QuerySingle<SiswaPrestasiModel>(sql, dp);
+            return conn.QueryFirstOrDefault<SiswaPrestasiModel>(sql, dp);
         }
 
         public IEnumerable<SiswaPrestasiModel> ListData()

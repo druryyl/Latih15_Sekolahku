@@ -21,6 +21,8 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Models
         public int JumSaudaraKandung { get; set; }
         public int JumSaudaraTiri { get; set; }
         public int JumSaudaraAngkat { get; set; }
+        public string KeberadaanOrtu { get; set; }
+        public string BahasaSehariHari { get; set; }
 
         public string AlamatSiswa { get; set; }
         public string NomorHpRumah { get; set; }

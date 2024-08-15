@@ -26,7 +26,7 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
 
             var dp = new DynamicParameters();
             dp.Add("@SiswaId", siswaRiwayat.SiswaId, DbType.Int32);
-            dp.Add("@GolDarah", siswaRiwayat.GolDarah, DbType.Int16);
+            dp.Add("@GolDarah", siswaRiwayat.GolDarah, DbType.String);
             dp.Add("@SakitPernahDiDerita", siswaRiwayat.SakitPernahDiderita, DbType.String); 
             dp.Add("@KelainanJasmani", siswaRiwayat.KelainanJasmani, DbType.String); 
             dp.Add("@TinggiBadan", siswaRiwayat.TinggiBadan, DbType.Int16); 
@@ -69,7 +69,7 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
 
             var dp = new DynamicParameters();
             dp.Add("@SiswaId", siswaRiwayat.SiswaId, DbType.Int32);
-            dp.Add("@GolDarah", siswaRiwayat.GolDarah, DbType.Int16);
+            dp.Add("@GolDarah", siswaRiwayat.GolDarah, DbType.String);
             dp.Add("@SakitPernahDiDerita", siswaRiwayat.SakitPernahDiderita, DbType.String);
             dp.Add("@KelainanJasmani", siswaRiwayat.KelainanJasmani, DbType.String);
             dp.Add("@TinggiBadan", siswaRiwayat.TinggiBadan, DbType.Int16);
@@ -102,7 +102,7 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
             conn.Execute(sql, dp);
         }
 
-        public SiswaRiwayatModel GetData(int siswaId)
+        public SiswaRiwayatModel? GetData(int siswaId)
         {
             const string sql = @"
                 SELECT
@@ -120,7 +120,7 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
             dp.Add("@SiswaId", siswaId, DbType.Int32);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.QuerySingle<SiswaRiwayatModel>(sql, dp);
+            return conn.QueryFirstOrDefault<SiswaRiwayatModel>(sql, dp);
         }
 
         public IEnumerable<SiswaRiwayatModel> ListData()

@@ -10,7 +10,7 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Models
     {
         public int SiswaId { get; set; }
 
-        public int GolDarah { get; set; }
+        public string GolDarah { get; set; }
         public string SakitPernahDiderita { get; set; }
         public string KelainanJasmani { get; set; }
         public int TinggiBadan { get; set; }

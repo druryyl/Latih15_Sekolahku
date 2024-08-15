@@ -9,6 +9,6 @@ namespace Latih15_Sekolahku.Helpers
     public static class ConnStringHelper
     {
         public static string Get() 
-            => $"Server=(local);Database=SekolahKu;Trusted_Connection=True;";
+            => $"Server=(local);Database=SekolahKu;Trusted_Connection=True;TrustServerCertificate=True";
     }
 }

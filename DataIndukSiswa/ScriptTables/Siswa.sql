@@ -7,10 +7,14 @@
     Gender  INT NOT NULL DEFAULT(''),
     Agama  VARCHAR(50) NOT NULL DEFAULT(''),
     WargaNegara  VARCHAR(50) NOT NULL DEFAULT(''),
+    
     AnakKe INT NOT NULL DEFAULT(0),
     JumSaudaraKandung  INT NOT NULL DEFAULT(0),
     JumSaudaraTiri  INT NOT NULL DEFAULT(0),
     JumSaudaraAngkat INT NOT NULL DEFAULT(0),
+    KeberadaanOrtu VARCHAR(50) NOT NULL DEFAULT(''),
+    BahasaSehariHari VARCHAR(50) NOT NULL DEFAULT(''),
+
     AlamatSiswa  VARCHAR(50) NOT NULL DEFAULT(''),
     NomorHpRumah  VARCHAR(50) NOT NULL DEFAULT(''),
     StatusTinggal  VARCHAR(50) NOT NULL DEFAULT(''),
