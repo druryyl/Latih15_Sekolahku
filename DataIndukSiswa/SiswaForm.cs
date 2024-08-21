@@ -25,6 +25,7 @@ public partial class SiswaForm : Form
         _siswaPrestasiDal = new SiswaPrestasiDal();
         _siswaBeasiswaDal = new SiswaBeasiswaDal();
         _siswaWaliDal = new SiswaWaliDal();
+        
         _beaSiswaList = new BindingList<BeasiswaDto>();
         _beasiswaBinding = new BindingSource
         {
@@ -68,6 +69,11 @@ public partial class SiswaForm : Form
 
     private void InitGrid()
     {
+        /*
+         *  Database => BindingList => BindingSource => Grid
+         * 
+         */ 
+
         BeasiswaGrid.DataSource = _beasiswaBinding;
         BeasiswaGrid.Columns["Tahun"].Width = 50;
         BeasiswaGrid.Columns["Kelas"].Width = 50;
@@ -402,6 +408,7 @@ public partial class SiswaForm : Form
         var listBea = _siswaBeasiswaDal.ListData(siswaId)?.ToList();
         if (listBea is null)
             return;
+
         _beaSiswaList.Clear();
         listBea.ForEach(x => _beaSiswaList.Add(new BeasiswaDto
         {
@@ -410,7 +417,6 @@ public partial class SiswaForm : Form
             Tahun = x.Tahun,
             Penyedia = x.PenyediaBeasiswa
         }));
-        
     }
 
     private void GetSiswaWali(int siswaId)
