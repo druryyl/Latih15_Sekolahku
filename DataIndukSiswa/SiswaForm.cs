@@ -1,5 +1,7 @@
 using Latih15_Sekolahku.DataIndukSiswa.Dal;
 using Latih15_Sekolahku.DataIndukSiswa.Models;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Latih15_Sekolahku;
 
@@ -11,6 +13,9 @@ public partial class SiswaForm : Form
     private readonly SiswaBeasiswaDal _siswaBeasiswaDal;
     private readonly SiswaWaliDal _siswaWaliDal;
 
+    private readonly BindingSource _beasiswaBinding;
+    private readonly BindingList<BeasiswaDto> _beaSiswaList;
+
     public SiswaForm()
     {
         InitializeComponent();
@@ -20,6 +25,11 @@ public partial class SiswaForm : Form
         _siswaPrestasiDal = new SiswaPrestasiDal();
         _siswaBeasiswaDal = new SiswaBeasiswaDal();
         _siswaWaliDal = new SiswaWaliDal();
+        _beaSiswaList = new BindingList<BeasiswaDto>();
+        _beasiswaBinding = new BindingSource
+        {
+            DataSource = _beaSiswaList
+        };
 
         RegisterControlEvent();
         InitCombo();
@@ -58,17 +68,10 @@ public partial class SiswaForm : Form
 
     private void InitGrid()
     {
-        BeasiswaGrid.Rows.Clear();
-        BeasiswaGrid.Columns.Clear();
-        BeasiswaGrid.Columns.Add("Tahun", "Tahun");
-        BeasiswaGrid.Columns.Add("Kelas", "Kelas");
-        BeasiswaGrid.Columns.Add("Penyedia", "Penyedia");
-
+        BeasiswaGrid.DataSource = _beasiswaBinding;
         BeasiswaGrid.Columns["Tahun"].Width = 50;
         BeasiswaGrid.Columns["Kelas"].Width = 50;
         BeasiswaGrid.Columns["Penyedia"].Width = 200;
-
-        BeasiswaGrid.Rows.Add();
     }
     #endregion
 
@@ -222,15 +225,15 @@ public partial class SiswaForm : Form
     {
         var listBeasiswa = new List<SiswaBeasiswaModel>();
         _siswaBeasiswaDal.Delete(siswaId);
-        foreach (DataGridViewRow row in BeasiswaGrid.Rows)
+        foreach (var item in _beaSiswaList)
         {
             var newItem = new SiswaBeasiswaModel
             {
                 SiswaId = siswaId,
                 NoUrut = listBeasiswa.Count + 1,
-                Kelas = row.Cells["Kelas"].Value?.ToString() ?? string.Empty,
-                Tahun = row.Cells["Tahun"].Value?.ToString() ?? string.Empty,
-                PenyediaBeasiswa = row.Cells["Penyedia"].Value?.ToString() ?? string.Empty
+                Kelas = item.Kelas,
+                Tahun = item.Tahun,
+                PenyediaBeasiswa = item.Penyedia
             };
             if ($"{newItem.Kelas}{newItem.Tahun}" == string.Empty)
                 continue;
@@ -396,20 +399,18 @@ public partial class SiswaForm : Form
 
     private void GetSiswaBeasiswa(int siswaId)
     {
-        var listBea = _siswaBeasiswaDal.ListData(siswaId);
+        var listBea = _siswaBeasiswaDal.ListData(siswaId)?.ToList();
         if (listBea is null)
             return;
-
-        var listDto = listBea
-            .Select(x => new BeasiswaDto
-            {
-                No = x.NoUrut,
-                Kelas = x.Kelas,
-                Tahun = x.Tahun,
-                Penyedia = x.PenyediaBeasiswa
-            });
-
-        BeasiswaGrid.DataSource = listDto;
+        _beaSiswaList.Clear();
+        listBea.ForEach(x => _beaSiswaList.Add(new BeasiswaDto
+        {
+            No = x.NoUrut,
+            Kelas = x.Kelas,
+            Tahun = x.Tahun,
+            Penyedia = x.PenyediaBeasiswa
+        }));
+        
     }
 
     private void GetSiswaWali(int siswaId)
@@ -470,6 +471,8 @@ public partial class SiswaForm : Form
     }
     #endregion
 
+
+
     #region HELPER
     private void ClearInput()
     {
@@ -515,7 +518,7 @@ public partial class SiswaForm : Form
         KemasyarakatanText.Clear();
         BakatLainnyaText.Clear();
         CitaCitaText.Clear();
-        BeasiswaGrid.DataSource = new List<BeasiswaDto>();
+        _beaSiswaList.Clear();
 
         //  Wali
         //      ayah
@@ -548,8 +551,6 @@ public partial class SiswaForm : Form
         PenghasilanWaliNumeric.Value = 0;
         NikWaliText.Clear();
         NoKkWaliText.Clear();
-
-        BeasiswaGrid.Rows.Add();
     }
 
     private void RefreshListData()
