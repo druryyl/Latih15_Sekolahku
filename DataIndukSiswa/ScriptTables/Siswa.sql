@@ -21,6 +21,8 @@
     JarakKeSekolah  INT NOT NULL DEFAULT(''),
     TransportKeSekolah  VARCHAR(50) NOT NULL DEFAULT(''),
 
+    LokasiPhoto VARCHAR(255) NOT NULL DEFAULT(''),
+
     CONSTRAINT PK_Siswa PRIMARY KEY CLUSTERED(SiswaId)
 )
 GO

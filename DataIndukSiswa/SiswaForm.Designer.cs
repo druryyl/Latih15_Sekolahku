@@ -30,6 +30,11 @@
         {
             SiswaTabControl = new TabControl();
             ListTabPage = new TabPage();
+            SiswaNameLabel = new Label();
+            SiswaIdLabel = new Label();
+            HapusPhotoButton = new Button();
+            PilihPhotoButton = new Button();
+            SiswaPhoto = new PictureBox();
             RefreshButton = new Button();
             NewButton = new Button();
             ListSiswaGrid = new DataGridView();
@@ -202,6 +207,7 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             SiswaTabControl.SuspendLayout();
             ListTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SiswaPhoto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ListSiswaGrid).BeginInit();
             PersonalTabPage.SuspendLayout();
             panel13.SuspendLayout();
@@ -259,6 +265,11 @@
             // 
             // ListTabPage
             // 
+            ListTabPage.Controls.Add(SiswaNameLabel);
+            ListTabPage.Controls.Add(SiswaIdLabel);
+            ListTabPage.Controls.Add(HapusPhotoButton);
+            ListTabPage.Controls.Add(PilihPhotoButton);
+            ListTabPage.Controls.Add(SiswaPhoto);
             ListTabPage.Controls.Add(RefreshButton);
             ListTabPage.Controls.Add(NewButton);
             ListTabPage.Controls.Add(ListSiswaGrid);
@@ -270,6 +281,55 @@
             ListTabPage.TabIndex = 0;
             ListTabPage.Text = "List Data";
             ListTabPage.UseVisualStyleBackColor = true;
+            // 
+            // SiswaNameLabel
+            // 
+            SiswaNameLabel.AutoSize = true;
+            SiswaNameLabel.Font = new Font("Courier New", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            SiswaNameLabel.Location = new Point(562, 39);
+            SiswaNameLabel.Name = "SiswaNameLabel";
+            SiswaNameLabel.Size = new Size(103, 16);
+            SiswaNameLabel.TabIndex = 7;
+            SiswaNameLabel.Text = "[Nama Siswa]";
+            // 
+            // SiswaIdLabel
+            // 
+            SiswaIdLabel.AutoSize = true;
+            SiswaIdLabel.Location = new Point(562, 14);
+            SiswaIdLabel.Name = "SiswaIdLabel";
+            SiswaIdLabel.Size = new Size(77, 15);
+            SiswaIdLabel.TabIndex = 6;
+            SiswaIdLabel.Text = "[ID Siswa]";
+            // 
+            // HapusPhotoButton
+            // 
+            HapusPhotoButton.Location = new Point(676, 331);
+            HapusPhotoButton.Margin = new Padding(3, 2, 3, 2);
+            HapusPhotoButton.Name = "HapusPhotoButton";
+            HapusPhotoButton.Size = new Size(69, 22);
+            HapusPhotoButton.TabIndex = 5;
+            HapusPhotoButton.Text = "Hapus";
+            HapusPhotoButton.UseVisualStyleBackColor = true;
+            // 
+            // PilihPhotoButton
+            // 
+            PilihPhotoButton.Location = new Point(562, 331);
+            PilihPhotoButton.Margin = new Padding(3, 2, 3, 2);
+            PilihPhotoButton.Name = "PilihPhotoButton";
+            PilihPhotoButton.Size = new Size(108, 22);
+            PilihPhotoButton.TabIndex = 4;
+            PilihPhotoButton.Text = "Pilih Photo";
+            PilihPhotoButton.UseVisualStyleBackColor = true;
+            // 
+            // SiswaPhoto
+            // 
+            SiswaPhoto.BorderStyle = BorderStyle.FixedSingle;
+            SiswaPhoto.Image = Properties.Resources.siswa_kosong;
+            SiswaPhoto.Location = new Point(562, 82);
+            SiswaPhoto.Name = "SiswaPhoto";
+            SiswaPhoto.Size = new Size(183, 244);
+            SiswaPhoto.TabIndex = 3;
+            SiswaPhoto.TabStop = false;
             // 
             // RefreshButton
             // 
@@ -283,10 +343,10 @@
             // 
             // NewButton
             // 
-            NewButton.Location = new Point(670, 397);
+            NewButton.Location = new Point(398, 397);
             NewButton.Margin = new Padding(3, 2, 3, 2);
             NewButton.Name = "NewButton";
-            NewButton.Size = new Size(75, 22);
+            NewButton.Size = new Size(90, 22);
             NewButton.TabIndex = 1;
             NewButton.Text = "New Siswa";
             NewButton.UseVisualStyleBackColor = true;
@@ -298,7 +358,7 @@
             ListSiswaGrid.Margin = new Padding(3, 2, 3, 2);
             ListSiswaGrid.Name = "ListSiswaGrid";
             ListSiswaGrid.RowTemplate.Height = 25;
-            ListSiswaGrid.Size = new Size(739, 389);
+            ListSiswaGrid.Size = new Size(550, 389);
             ListSiswaGrid.TabIndex = 0;
             // 
             // PersonalTabPage
@@ -1988,6 +2048,8 @@
             Text = "Data Induk Siswa";
             SiswaTabControl.ResumeLayout(false);
             ListTabPage.ResumeLayout(false);
+            ListTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)SiswaPhoto).EndInit();
             ((System.ComponentModel.ISupportInitialize)ListSiswaGrid).EndInit();
             PersonalTabPage.ResumeLayout(false);
             PersonalTabPage.PerformLayout();
@@ -2225,5 +2287,10 @@
         private TextBox LamaBelajarText;
         private TextBox NoIjazahText;
         private Button RefreshButton;
+        private PictureBox SiswaPhoto;
+        private Button HapusPhotoButton;
+        private Button PilihPhotoButton;
+        private Label SiswaNameLabel;
+        private Label SiswaIdLabel;
     }
 }

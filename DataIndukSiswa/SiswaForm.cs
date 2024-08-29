@@ -2,6 +2,7 @@ using Latih15_Sekolahku.DataIndukSiswa.Dal;
 using Latih15_Sekolahku.DataIndukSiswa.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Latih15_Sekolahku;
 
@@ -15,6 +16,8 @@ public partial class SiswaForm : Form
 
     private readonly BindingSource _beasiswaBinding;
     private readonly BindingList<BeasiswaDto> _beaSiswaList;
+    
+    private string _photoLokasi = string.Empty;
 
     public SiswaForm()
     {
@@ -88,6 +91,73 @@ public partial class SiswaForm : Form
         NewButton.Click += NewButton_Click;
         SavePersonalButton.Click += SaveButton_Click;
         ListSiswaGrid.CellDoubleClick += ListSiswaGrid_CellDoubleClick;
+
+        PilihPhotoButton.Click += PilihPhotoButton_Click;
+        HapusPhotoButton.Click += HapusPhotoButton_Click;
+        ListSiswaGrid.SelectionChanged += ListSiswaGrid_SelectionChanged;
+        ListSiswaGrid.RowEnter += ListSiswaGrid_RowEnter;
+    }
+
+    private void ListSiswaGrid_RowEnter(object? sender, DataGridViewCellEventArgs e)
+    {
+        var siswaId = ListSiswaGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+        var siswaName = ListSiswaGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
+        SiswaIdLabel.Text = siswaId;
+        SiswaNameLabel.Text = siswaName;
+
+        var siswa = _siswaDal.GetData(Convert.ToInt32(siswaId));
+        _photoLokasi = siswa?.LokasiPhoto ?? string.Empty;
+        if (_photoLokasi != string.Empty)
+            SiswaPhoto.Image = Image.FromFile(_photoLokasi);
+        else
+            SiswaPhoto.Image = null;
+    }
+
+    private void ListSiswaGrid_SelectionChanged(object? sender, EventArgs e)
+    {
+        if (ListSiswaGrid.SelectedRows.Count > 0)
+        {
+            DataGridViewRow selectedRow = ListSiswaGrid.SelectedRows[0];
+
+            string siswaId = selectedRow.Cells[0].Value.ToString();
+            string siswaName = selectedRow.Cells[1].Value.ToString();
+            
+            SiswaIdLabel.Text = siswaId;
+            SiswaNameLabel.Text = siswaName;
+
+            var siswa = _siswaDal.GetData(Convert.ToInt32(siswaId));
+            _photoLokasi = siswa?.LokasiPhoto ?? string.Empty;
+            if (_photoLokasi != string.Empty)
+                SiswaPhoto.Image = Image.FromFile(_photoLokasi);
+            else
+                SiswaPhoto.Image = null;
+
+        }
+    }
+
+    private void HapusPhotoButton_Click(object? sender, EventArgs e)
+    {
+        SiswaPhoto.Image = null;
+        _photoLokasi = string.Empty;
+    }
+
+    private void PilihPhotoButton_Click(object? sender, EventArgs e)
+    {
+        var openFileDialog = new OpenFileDialog
+        {
+            Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif",
+            FilterIndex = 1,
+            Title = "Select a Photo"
+        };
+
+        if (openFileDialog.ShowDialog() == DialogResult.OK)
+        {
+            SiswaPhoto.Image = System.Drawing.Image.FromFile(openFileDialog.FileName);
+            SiswaPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
+            _photoLokasi = openFileDialog.FileName;
+
+            UpdatePhotoSiswa();
+        }
     }
 
     private void ListSiswaGrid_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
@@ -477,6 +547,18 @@ public partial class SiswaForm : Form
     }
     #endregion
 
+    private void UpdatePhotoSiswa()
+    {
+        var siswa = _siswaDal.GetData(Convert.ToInt32(SiswaIdLabel.Text));
+        if (siswa is null)
+        {
+            SiswaPhoto.Image = null;
+            _photoLokasi = string.Empty;
+            return;
+        }
+        siswa.LokasiPhoto = _photoLokasi;
+        _siswaDal.Update(siswa);
+    }
 
 
     #region HELPER

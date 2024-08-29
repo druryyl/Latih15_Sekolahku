@@ -16,14 +16,14 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
                     TanggalLahir, Gender, Agama, WargaNegara,
                     AnakKe, JumSaudaraKandung, JumSaudaraTiri, JumSaudaraAngkat,
                     AlamatSiswa, NomorHpRumah, StatusTinggal,
-                    JarakKeSekolah, TransportKeSekolah)
+                    JarakKeSekolah, TransportKeSekolah, LokasiPhoto)
                 OUTPUT INSERTED.SiswaId
                 VALUES (
                     @NamaLengkap, @NamaPanggilan, @TempatLahir,
                     @TanggalLahir, @Gender, @Agama, @WargaNegara,
                     @AnakKe, @JumSaudaraKandung, @JumSaudaraTiri, @JumSaudaraAngkat,
                     @AlamatSiswa, @NomorHpRumah, @StatusTinggal,
-                    @JarakKeSekolah, @TransportKeSekolah)";
+                    @JarakKeSekolah, @TransportKeSekolah, @LokasiPhoto)";
 
             var dp = new DynamicParameters();
             dp.Add("@NamaLengkap", siswa.NamaLengkap, DbType.String);
@@ -42,6 +42,7 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
             dp.Add("@StatusTinggal", siswa.StatusTinggal, DbType.String);
             dp.Add("@JarakKeSekolah", siswa.JarakKeSekolah, DbType.Int16); 
             dp.Add("@TransportKeSekolah", siswa.TransportKeSekolah, DbType.String);
+            dp.Add("@LokasiPhoto", siswa.LokasiPhoto, DbType.String);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             var result = conn.QuerySingle<int>(sql, dp);
@@ -69,7 +70,8 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
                     NomorHpRumah = @NomorHpRumah, 
                     StatusTinggal = @StatusTinggal,
                     JarakKeSekolah = @JarakKeSekolah, 
-                    TransportKeSekolah = @TransportKeSekolah
+                    TransportKeSekolah = @TransportKeSekolah,
+                    LokasiPhoto = @LokasiPhoto  
                 WHERE
                     SiswaId = @SiswaId";     
 
@@ -91,6 +93,7 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
             dp.Add("@StatusTinggal", siswa.StatusTinggal, DbType.String);
             dp.Add("@JarakKeSekolah", siswa.JarakKeSekolah, DbType.Int16);
             dp.Add("@TransportKeSekolah", siswa.TransportKeSekolah, DbType.String);
+            dp.Add("@LokasiPhoto", siswa.LokasiPhoto, DbType.String);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             conn.Execute(sql, dp);
@@ -115,11 +118,11 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
         {
             const string sql = @"
                 SELECT
-                    NamaLengkap, NamaPanggilan, TempatLahir,
+                    SiswaId, NamaLengkap, NamaPanggilan, TempatLahir,
                     TanggalLahir, Gender, Agama, WargaNegara,
                     AnakKe, JumSaudaraKandung, JumSaudaraTiri, JumSaudaraAngkat,
                     AlamatSiswa, NomorHpRumah, StatusTinggal,
-                    JarakKeSekolah, TransportKeSekolah
+                    JarakKeSekolah, TransportKeSekolah, LokasiPhoto
                 FROM
                     Siswa
                 WHERE
@@ -140,7 +143,7 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Dal
                     TanggalLahir, Gender, Agama, WargaNegara,
                     AnakKe, JumSaudaraKandung, JumSaudaraTiri, JumSaudaraAngkat,
                     AlamatSiswa, NomorHpRumah, StatusTinggal,
-                    JarakKeSekolah, TransportKeSekolah
+                    JarakKeSekolah, TransportKeSekolah, LokasiPhoto
                 FROM
                     Siswa";
 

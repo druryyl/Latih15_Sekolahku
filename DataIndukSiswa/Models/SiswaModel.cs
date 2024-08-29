@@ -29,6 +29,8 @@ namespace Latih15_Sekolahku.DataIndukSiswa.Models
         public string StatusTinggal { get; set; }
         public int JarakKeSekolah { get; set; }
         public string TransportKeSekolah { get; set; }
+
+        public string LokasiPhoto { get; set; }
     }
 
 
