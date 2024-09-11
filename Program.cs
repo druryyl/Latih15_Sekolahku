@@ -1,3 +1,5 @@
+using Latih15_Sekolahku.Helpers;
+
 namespace Latih15_Sekolahku
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace Latih15_Sekolahku
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new SiswaForm());
+            Application.Run(new MainForm());
         }
     }
 }

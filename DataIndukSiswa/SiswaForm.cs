@@ -94,7 +94,7 @@ public partial class SiswaForm : Form
 
         PilihPhotoButton.Click += PilihPhotoButton_Click;
         HapusPhotoButton.Click += HapusPhotoButton_Click;
-        ListSiswaGrid.SelectionChanged += ListSiswaGrid_SelectionChanged;
+        //ListSiswaGrid.SelectionChanged += ListSiswaGrid_SelectionChanged;
         ListSiswaGrid.RowEnter += ListSiswaGrid_RowEnter;
     }
 
@@ -113,27 +113,27 @@ public partial class SiswaForm : Form
             SiswaPhoto.Image = null;
     }
 
-    private void ListSiswaGrid_SelectionChanged(object? sender, EventArgs e)
-    {
-        if (ListSiswaGrid.SelectedRows.Count > 0)
-        {
-            DataGridViewRow selectedRow = ListSiswaGrid.SelectedRows[0];
+    //private void ListSiswaGrid_SelectionChanged(object? sender, EventArgs e)
+    //{
+    //    if (ListSiswaGrid.SelectedRows.Count > 0)
+    //    {
+    //        DataGridViewRow selectedRow = ListSiswaGrid.SelectedRows[0];
 
-            string siswaId = selectedRow.Cells[0].Value.ToString();
-            string siswaName = selectedRow.Cells[1].Value.ToString();
+    //        string siswaId = selectedRow.Cells[0].Value.ToString();
+    //        string siswaName = selectedRow.Cells[1].Value.ToString();
             
-            SiswaIdLabel.Text = siswaId;
-            SiswaNameLabel.Text = siswaName;
+    //        SiswaIdLabel.Text = siswaId;
+    //        SiswaNameLabel.Text = siswaName;
 
-            var siswa = _siswaDal.GetData(Convert.ToInt32(siswaId));
-            _photoLokasi = siswa?.LokasiPhoto ?? string.Empty;
-            if (_photoLokasi != string.Empty)
-                SiswaPhoto.Image = Image.FromFile(_photoLokasi);
-            else
-                SiswaPhoto.Image = null;
+    //        var siswa = _siswaDal.GetData(Convert.ToInt32(siswaId));
+    //        _photoLokasi = siswa?.LokasiPhoto ?? string.Empty;
+    //        if (_photoLokasi != string.Empty)
+    //            SiswaPhoto.Image = Image.FromFile(_photoLokasi);
+    //        else
+    //            SiswaPhoto.Image = null;
 
-        }
-    }
+    //    }
+    //}
 
     private void HapusPhotoButton_Click(object? sender, EventArgs e)
     {
