@@ -1,5 +1,6 @@
 ﻿using Latih15_Sekolahku.Jurusan;
 using Latih15_Sekolahku.Kelas;
+using Latih15_Sekolahku.Mapel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,6 +37,18 @@ namespace Latih15_Sekolahku.Helpers
         private void kelasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var form = new KelasForm();
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void guruToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mataPelajaranToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new MapelForm();
             form.MdiParent = this;
             form.Show();
         }

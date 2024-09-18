@@ -1,14 +1,4 @@
-﻿using Latih15_Sekolahku.DataIndukSiswa.Dal;
-using Latih15_Sekolahku.DataIndukSiswa.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 
 namespace Latih15_Sekolahku.Jurusan;
 
@@ -106,7 +96,6 @@ public partial class JurusanForm : Form
             }).ToList();
         ListDataGrid.DataSource = listData;
         ListDataGrid.AutoResizeColumns();
-        //ListDataGrid.Refresh();
     }
 }
 

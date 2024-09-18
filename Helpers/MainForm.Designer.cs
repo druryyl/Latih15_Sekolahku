@@ -34,6 +34,8 @@
             kelasToolStripMenuItem = new ToolStripMenuItem();
             jurusanToolStripMenuItem = new ToolStripMenuItem();
             kelasToolStripMenuItem1 = new ToolStripMenuItem();
+            guruToolStripMenuItem = new ToolStripMenuItem();
+            mataPelajaranToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,10 +64,10 @@
             // 
             // kelasToolStripMenuItem
             // 
-            kelasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { jurusanToolStripMenuItem, kelasToolStripMenuItem1 });
+            kelasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { jurusanToolStripMenuItem, kelasToolStripMenuItem1, guruToolStripMenuItem, mataPelajaranToolStripMenuItem });
             kelasToolStripMenuItem.Name = "kelasToolStripMenuItem";
-            kelasToolStripMenuItem.Size = new Size(46, 20);
-            kelasToolStripMenuItem.Text = "Kelas";
+            kelasToolStripMenuItem.Size = new Size(78, 20);
+            kelasToolStripMenuItem.Text = "Pengajaran";
             // 
             // jurusanToolStripMenuItem
             // 
@@ -80,6 +82,20 @@
             kelasToolStripMenuItem1.Size = new Size(180, 22);
             kelasToolStripMenuItem1.Text = "Kelas ...";
             kelasToolStripMenuItem1.Click += kelasToolStripMenuItem1_Click;
+            // 
+            // guruToolStripMenuItem
+            // 
+            guruToolStripMenuItem.Name = "guruToolStripMenuItem";
+            guruToolStripMenuItem.Size = new Size(180, 22);
+            guruToolStripMenuItem.Text = "Guru ...";
+            guruToolStripMenuItem.Click += guruToolStripMenuItem_Click;
+            // 
+            // mataPelajaranToolStripMenuItem
+            // 
+            mataPelajaranToolStripMenuItem.Name = "mataPelajaranToolStripMenuItem";
+            mataPelajaranToolStripMenuItem.Size = new Size(180, 22);
+            mataPelajaranToolStripMenuItem.Text = "Mata Pelajaran ...";
+            mataPelajaranToolStripMenuItem.Click += mataPelajaranToolStripMenuItem_Click;
             // 
             // MainForm
             // 
@@ -105,5 +121,7 @@
         private ToolStripMenuItem dataIndukSiswaToolStripMenuItem;
         private ToolStripMenuItem jurusanToolStripMenuItem;
         private ToolStripMenuItem kelasToolStripMenuItem1;
+        private ToolStripMenuItem guruToolStripMenuItem;
+        private ToolStripMenuItem mataPelajaranToolStripMenuItem;
     }
 }
