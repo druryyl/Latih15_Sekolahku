@@ -67,7 +67,7 @@ namespace Latih15_Sekolahku.Mapel
             dp.Add("@MapelId", mapelId, DbType.Int16);
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
-            return conn.QuerySingle<MapelModel>(sql, dp); 
+            return conn.Query<MapelModel>(sql, dp).FirstOrDefault(); 
         }
 
         public IEnumerable<MapelModel>  ListData()

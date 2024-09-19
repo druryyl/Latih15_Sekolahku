@@ -1,6 +1,8 @@
 ﻿using Latih15_Sekolahku.Mapel;
 using System.ComponentModel;
 using System.Data;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace Latih15_Sekolahku.Guru;
 
@@ -73,6 +75,54 @@ public partial class GuruForm : Form
         DeleteButton.Click += DeletButton_Click;
 
         ListDataGrid.RowEnter += ListDataGrid_RowEnter;
+        MapelGrid.KeyDown += MapelGrid_KeyDown;
+        MapelGrid.CellValidated += MapelGrid_CellValidated;
+    }
+
+    private void MapelGrid_CellValidated(object? sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex < 0) return;
+        var grid = (DataGridView)sender;
+        switch (grid.CurrentCell.OwningColumn.Name)
+        {
+            case "Id":
+                var mapel = _mapelDal.GetData(Convert.ToInt16(grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value));
+                if (mapel == null)
+                {
+                    _listMapel[e.RowIndex].Mapel = "";
+                    return;
+                }
+                _listMapel[e.RowIndex].Id = mapel.MapelId;
+                _listMapel[e.RowIndex].Mapel= mapel.MapelName;
+                break;
+        }
+    }
+
+    private void MapelGrid_KeyDown(object? sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.F1)
+        {
+            DataGridViewRow currentRow = MapelGrid.CurrentRow;
+
+            using var mapelListForm = new MapelListForm();
+            if (mapelListForm.ShowDialog() == DialogResult.OK)
+            {
+                var mapelId = mapelListForm.MapelId;
+                var mapelName = mapelListForm.MapelName;
+                //_listMapel[MapelGrid.CurrentCell.RowIndex].Id = mapelId;
+                //_listMapel[MapelGrid.CurrentCell.RowIndex].Mapel = mapelName;
+
+                MapelGrid.BeginEdit(true);
+                currentRow.Cells["Id"].Value = mapelId;
+                currentRow.Cells["Mapel"].Value = mapelName;
+                MapelGrid.EndEdit(DataGridViewDataErrorContexts.Commit);
+
+                //MapelGrid.InvalidateRow(currentRow.Index);
+                //MapelGrid.NotifyCurrentCellDirty(true);
+                //MapelGrid.EndEdit();
+
+            }
+        }
     }
 
     private void ListDataGrid_RowEnter(object? sender, DataGridViewCellEventArgs e)
