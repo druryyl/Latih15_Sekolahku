@@ -1,4 +1,5 @@
-﻿using Latih15_Sekolahku.Jurusan;
+﻿using Latih15_Sekolahku.Guru;
+using Latih15_Sekolahku.Jurusan;
 using Latih15_Sekolahku.Kelas;
 using Latih15_Sekolahku.Mapel;
 using System;
@@ -43,6 +44,9 @@ namespace Latih15_Sekolahku.Helpers
 
         private void guruToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var form = new GuruForm();
+            form.MdiParent = this;
+            form.Show();
 
         }
 
