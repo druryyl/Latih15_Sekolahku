@@ -2,8 +2,8 @@
 {
     public class GuruMapelModel
     {
-        public string GuruId { get; set; }
-        public string MapelId { get; set; }
+        public int GuruId { get; set; }
+        public int MapelId { get; set; }
         public string MapelName { get; set; }
     }
 }

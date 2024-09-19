@@ -18,7 +18,7 @@ public class GuruDal
             VALUES(
                 @GuruName, @TglLahir, @JurusanPendidikan, 
                 @TingkatPendidikan, @TahunLulus, @InstansiPendidikan, 
-                @KotaPendidikan";
+                @KotaPendidikan)";
 
         var dp = new DynamicParameters();
         dp.Add("@GuruName", model.GuruName, DbType.String); 
@@ -94,7 +94,7 @@ public class GuruDal
         return conn.QuerySingle<GuruModel>(sql, dp);
     }
 
-    public GuruModel ListData(int guruId)
+    public IEnumerable<GuruModel> ListData()
     {
         const string sql = @"
             SELECT
@@ -105,7 +105,7 @@ public class GuruDal
                 Guru ";
 
         using var conn = new SqlConnection(ConnStringHelper.Get());
-        return conn.QuerySingle<GuruModel>(sql);
+        return conn.Query<GuruModel>(sql);
     }
 
 }

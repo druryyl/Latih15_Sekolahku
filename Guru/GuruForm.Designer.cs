@@ -30,6 +30,8 @@
         {
             ListDataGrid = new DataGridView();
             panel1 = new Panel();
+            TahunLulusText = new TextBox();
+            label8 = new Label();
             KotaText = new TextBox();
             label7 = new Label();
             InstansiPendidikanText = new TextBox();
@@ -40,20 +42,18 @@
             label4 = new Label();
             TglLahirDate = new DateTimePicker();
             label3 = new Label();
-            pictureBox1 = new PictureBox();
+            PhotoPic = new PictureBox();
             GuruNameText = new TextBox();
             label2 = new Label();
             GuruIdText = new TextBox();
             label1 = new Label();
-            TahunLulusText = new TextBox();
-            label8 = new Label();
             MapelGrid = new DataGridView();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            NewButton = new Button();
+            SaveButton = new Button();
+            DeleteButton = new Button();
             ((System.ComponentModel.ISupportInitialize)ListDataGrid).BeginInit();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PhotoPic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MapelGrid).BeginInit();
             SuspendLayout();
             // 
@@ -82,7 +82,7 @@
             panel1.Controls.Add(label4);
             panel1.Controls.Add(TglLahirDate);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(PhotoPic);
             panel1.Controls.Add(GuruNameText);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(GuruIdText);
@@ -92,10 +92,27 @@
             panel1.Size = new Size(405, 285);
             panel1.TabIndex = 1;
             // 
+            // TahunLulusText
+            // 
+            TahunLulusText.BorderStyle = BorderStyle.FixedSingle;
+            TahunLulusText.Location = new Point(12, 250);
+            TahunLulusText.Name = "TahunLulusText";
+            TahunLulusText.Size = new Size(176, 23);
+            TahunLulusText.TabIndex = 17;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(12, 232);
+            label8.Name = "label8";
+            label8.Size = new Size(70, 15);
+            label8.TabIndex = 16;
+            label8.Text = "Tahun Lulus";
+            // 
             // KotaText
             // 
             KotaText.BorderStyle = BorderStyle.FixedSingle;
-            KotaText.Location = new Point(204, 206);
+            KotaText.Location = new Point(204, 250);
             KotaText.Name = "KotaText";
             KotaText.Size = new Size(176, 23);
             KotaText.TabIndex = 14;
@@ -103,7 +120,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(204, 188);
+            label7.Location = new Point(204, 232);
             label7.Name = "label7";
             label7.Size = new Size(31, 15);
             label7.TabIndex = 13;
@@ -112,7 +129,7 @@
             // InstansiPendidikanText
             // 
             InstansiPendidikanText.BorderStyle = BorderStyle.FixedSingle;
-            InstansiPendidikanText.Location = new Point(204, 162);
+            InstansiPendidikanText.Location = new Point(204, 206);
             InstansiPendidikanText.Name = "InstansiPendidikanText";
             InstansiPendidikanText.Size = new Size(176, 23);
             InstansiPendidikanText.TabIndex = 12;
@@ -120,7 +137,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(204, 144);
+            label6.Location = new Point(204, 188);
             label6.Name = "label6";
             label6.Size = new Size(109, 15);
             label6.TabIndex = 11;
@@ -176,14 +193,14 @@
             label3.TabIndex = 5;
             label3.Text = "Tgl Lahir";
             // 
-            // pictureBox1
+            // PhotoPic
             // 
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Location = new Point(204, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(115, 129);
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
+            PhotoPic.BorderStyle = BorderStyle.FixedSingle;
+            PhotoPic.Location = new Point(204, 12);
+            PhotoPic.Name = "PhotoPic";
+            PhotoPic.Size = new Size(176, 173);
+            PhotoPic.TabIndex = 4;
+            PhotoPic.TabStop = false;
             // 
             // GuruNameText
             // 
@@ -219,23 +236,6 @@
             label1.TabIndex = 0;
             label1.Text = "Guru ID";
             // 
-            // TahunLulusText
-            // 
-            TahunLulusText.BorderStyle = BorderStyle.FixedSingle;
-            TahunLulusText.Location = new Point(204, 250);
-            TahunLulusText.Name = "TahunLulusText";
-            TahunLulusText.Size = new Size(176, 23);
-            TahunLulusText.TabIndex = 17;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(204, 232);
-            label8.Name = "label8";
-            label8.Size = new Size(70, 15);
-            label8.TabIndex = 16;
-            label8.Text = "Tahun Lulus";
-            // 
             // MapelGrid
             // 
             MapelGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -245,32 +245,32 @@
             MapelGrid.Size = new Size(405, 89);
             MapelGrid.TabIndex = 16;
             // 
-            // button1
+            // NewButton
             // 
-            button1.Location = new Point(359, 398);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 17;
-            button1.Text = "New";
-            button1.UseVisualStyleBackColor = true;
+            NewButton.Location = new Point(359, 398);
+            NewButton.Name = "NewButton";
+            NewButton.Size = new Size(75, 23);
+            NewButton.TabIndex = 17;
+            NewButton.Text = "New";
+            NewButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // SaveButton
             // 
-            button2.Location = new Point(608, 398);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 18;
-            button2.Text = "Save";
-            button2.UseVisualStyleBackColor = true;
+            SaveButton.Location = new Point(608, 398);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new Size(75, 23);
+            SaveButton.TabIndex = 18;
+            SaveButton.Text = "Save";
+            SaveButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // DeleteButton
             // 
-            button3.Location = new Point(689, 398);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 19;
-            button3.Text = "Delete";
-            button3.UseVisualStyleBackColor = true;
+            DeleteButton.Location = new Point(689, 398);
+            DeleteButton.Name = "DeleteButton";
+            DeleteButton.Size = new Size(75, 23);
+            DeleteButton.TabIndex = 19;
+            DeleteButton.Text = "Delete";
+            DeleteButton.UseVisualStyleBackColor = true;
             // 
             // GuruForm
             // 
@@ -278,9 +278,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Khaki;
             ClientSize = new Size(776, 429);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(DeleteButton);
+            Controls.Add(SaveButton);
+            Controls.Add(NewButton);
             Controls.Add(MapelGrid);
             Controls.Add(panel1);
             Controls.Add(ListDataGrid);
@@ -289,7 +289,7 @@
             ((System.ComponentModel.ISupportInitialize)ListDataGrid).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PhotoPic).EndInit();
             ((System.ComponentModel.ISupportInitialize)MapelGrid).EndInit();
             ResumeLayout(false);
         }
@@ -300,7 +300,7 @@
         private Panel panel1;
         private DateTimePicker TglLahirDate;
         private Label label3;
-        private PictureBox pictureBox1;
+        private PictureBox PhotoPic;
         private TextBox GuruNameText;
         private Label label2;
         private TextBox GuruIdText;
@@ -316,8 +316,8 @@
         private TextBox TahunLulusText;
         private Label label8;
         private DataGridView MapelGrid;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button NewButton;
+        private Button SaveButton;
+        private Button DeleteButton;
     }
 }

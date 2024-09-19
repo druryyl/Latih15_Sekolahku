@@ -2,12 +2,6 @@
 using Latih15_Sekolahku.DataIndukSiswa.Models;
 using Latih15_Sekolahku.Helpers;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Latih15_Sekolahku.DataIndukSiswa.Dal
 {

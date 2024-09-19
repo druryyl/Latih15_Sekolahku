@@ -8,7 +8,7 @@ namespace Latih15_Sekolahku.Guru
 {
     public class GuruModel
     {
-        public string GuruId { get; set; }
+        public int GuruId { get; set; }
         public string GuruName { get; set; }
         public DateTime TglLahir { get; set; }
 
