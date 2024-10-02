@@ -36,6 +36,8 @@
             kelasToolStripMenuItem1 = new ToolStripMenuItem();
             guruToolStripMenuItem = new ToolStripMenuItem();
             mataPelajaranToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripSeparator();
+            jadwalMapelToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -64,7 +66,7 @@
             // 
             // kelasToolStripMenuItem
             // 
-            kelasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { jurusanToolStripMenuItem, kelasToolStripMenuItem1, guruToolStripMenuItem, mataPelajaranToolStripMenuItem });
+            kelasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { jurusanToolStripMenuItem, kelasToolStripMenuItem1, guruToolStripMenuItem, mataPelajaranToolStripMenuItem, toolStripMenuItem1, jadwalMapelToolStripMenuItem });
             kelasToolStripMenuItem.Name = "kelasToolStripMenuItem";
             kelasToolStripMenuItem.Size = new Size(78, 20);
             kelasToolStripMenuItem.Text = "Pengajaran";
@@ -97,6 +99,18 @@
             mataPelajaranToolStripMenuItem.Text = "Mata Pelajaran ...";
             mataPelajaranToolStripMenuItem.Click += mataPelajaranToolStripMenuItem_Click;
             // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(177, 6);
+            // 
+            // jadwalMapelToolStripMenuItem
+            // 
+            jadwalMapelToolStripMenuItem.Name = "jadwalMapelToolStripMenuItem";
+            jadwalMapelToolStripMenuItem.Size = new Size(180, 22);
+            jadwalMapelToolStripMenuItem.Text = "Jadwal Mapel ...";
+            jadwalMapelToolStripMenuItem.Click += jadwalMapelToolStripMenuItem_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -123,5 +137,7 @@
         private ToolStripMenuItem kelasToolStripMenuItem1;
         private ToolStripMenuItem guruToolStripMenuItem;
         private ToolStripMenuItem mataPelajaranToolStripMenuItem;
+        private ToolStripSeparator toolStripMenuItem1;
+        private ToolStripMenuItem jadwalMapelToolStripMenuItem;
     }
 }

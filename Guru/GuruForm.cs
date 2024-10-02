@@ -198,6 +198,9 @@ public partial class GuruForm : Form
         else
             _guruDal.Update(guru);
 
+        foreach (var item in guru.ListMapel)
+            item.GuruId = guru.GuruId;
+
         _guruMapelDal.Delete(guru.GuruId);
         _guruMapelDal.Insert(guru.ListMapel);
 

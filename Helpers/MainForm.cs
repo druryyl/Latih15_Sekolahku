@@ -1,4 +1,5 @@
 ﻿using Latih15_Sekolahku.Guru;
+using Latih15_Sekolahku.JadwalMapel;
 using Latih15_Sekolahku.Jurusan;
 using Latih15_Sekolahku.Kelas;
 using Latih15_Sekolahku.Mapel;
@@ -53,6 +54,13 @@ namespace Latih15_Sekolahku.Helpers
         private void mataPelajaranToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new MapelForm();
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void jadwalMapelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new TimeslotMapelForm();
             form.MdiParent = this;
             form.Show();
         }

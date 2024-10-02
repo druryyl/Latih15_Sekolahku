@@ -50,6 +50,7 @@ public class GuruDal
                 GuruId = @GuruId ";
 
         var dp = new DynamicParameters();
+        dp.Add("@GuruId", model.GuruId, DbType.Int32);
         dp.Add("@GuruName", model.GuruName, DbType.String);
         dp.Add("@TglLahir", model.TglLahir, DbType.DateTime);
         dp.Add("@JurusanPendidikan", model.JurusanPendidikan, DbType.String);

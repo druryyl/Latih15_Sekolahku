@@ -17,7 +17,7 @@ namespace Latih15_Sekolahku.Guru
                 INSERT INTO GuruMapel
                     (GuruId, MapelId)
                 VALUES
-                    (GuruId, MapelId)";
+                    (@GuruId, @MapelId)";
 
             using var conn = new SqlConnection(ConnStringHelper.Get());
             foreach (var item in listMapel)
@@ -33,7 +33,7 @@ namespace Latih15_Sekolahku.Guru
         public void Delete(int guruId)
         {
             const string sql = @"
-                DELETE FROM Guru
+                DELETE FROM GuruMapel
                 WHERE GuruId = @GuruId";
 
             var dp = new DynamicParameters();
