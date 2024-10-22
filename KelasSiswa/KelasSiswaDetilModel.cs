@@ -2,8 +2,8 @@
 {
     public class KelasSiswaDetilModel
     {
-        public string KelasId { get; set;; }
-        public string SiswaId { get; set; }
+        public int KelasId { get; set; }
+        public int SiswaId { get; set; }
         public string SiswaName { get; set; }
     }
 }

@@ -35,13 +35,13 @@
             label2 = new Label();
             KelasCombo = new ComboBox();
             label1 = new Label();
-            SiswaGrid = new DataGridView();
+            AllSiswaGrid = new DataGridView();
             SaveButton = new Button();
-            dataGridView1 = new DataGridView();
+            KelasSiswaGrid = new DataGridView();
             textBox1 = new TextBox();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)SiswaGrid).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AllSiswaGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)KelasSiswaGrid).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -110,14 +110,14 @@
             label1.TabIndex = 0;
             label1.Text = "Kelas";
             // 
-            // SiswaGrid
+            // AllSiswaGrid
             // 
-            SiswaGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            SiswaGrid.Location = new Point(270, 43);
-            SiswaGrid.Name = "SiswaGrid";
-            SiswaGrid.RowTemplate.Height = 25;
-            SiswaGrid.Size = new Size(256, 366);
-            SiswaGrid.TabIndex = 1;
+            AllSiswaGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            AllSiswaGrid.Location = new Point(270, 43);
+            AllSiswaGrid.Name = "AllSiswaGrid";
+            AllSiswaGrid.RowTemplate.Height = 25;
+            AllSiswaGrid.Size = new Size(256, 366);
+            AllSiswaGrid.TabIndex = 1;
             // 
             // SaveButton
             // 
@@ -130,14 +130,14 @@
             SaveButton.Text = "Save";
             SaveButton.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // KelasSiswaGrid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(532, 43);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(256, 366);
-            dataGridView1.TabIndex = 3;
+            KelasSiswaGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            KelasSiswaGrid.Location = new Point(532, 43);
+            KelasSiswaGrid.Name = "KelasSiswaGrid";
+            KelasSiswaGrid.RowTemplate.Height = 25;
+            KelasSiswaGrid.Size = new Size(256, 366);
+            KelasSiswaGrid.TabIndex = 3;
             // 
             // textBox1
             // 
@@ -154,16 +154,16 @@
             BackColor = Color.Khaki;
             ClientSize = new Size(800, 450);
             Controls.Add(textBox1);
-            Controls.Add(dataGridView1);
+            Controls.Add(KelasSiswaGrid);
             Controls.Add(SaveButton);
-            Controls.Add(SiswaGrid);
+            Controls.Add(AllSiswaGrid);
             Controls.Add(panel1);
             Name = "KelasSiswaForm";
             Text = "Kelas - Siswa";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)SiswaGrid).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AllSiswaGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)KelasSiswaGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -177,9 +177,9 @@
         private Label label2;
         private ComboBox KelasCombo;
         private Label label1;
-        private DataGridView SiswaGrid;
+        private DataGridView AllSiswaGrid;
         private Button SaveButton;
-        private DataGridView dataGridView1;
+        private DataGridView KelasSiswaGrid;
         private TextBox textBox1;
     }
 }

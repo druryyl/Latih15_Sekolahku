@@ -1,12 +1,7 @@
 ﻿using Dapper;
 using Latih15_Sekolahku.Helpers;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Latih15_Sekolahku.KelasSiswa;
 
@@ -19,9 +14,9 @@ public class KelasSiswaDal
             VALUES (@KelasId, @TahunAjaran, @WaliKelasId)";
 
         var dp = new DynamicParameters();
-        dp.Add("@KelasId", kelasSiswa.KelasId, DbType.String);
+        dp.Add("@KelasId", kelasSiswa.KelasId, DbType.Int32);
         dp.Add("@TahunAjaran", kelasSiswa.TahunAjaran, DbType.String);
-        dp.Add("@WaliKelasId", kelasSiswa.WaliKelasId, DbType.String);
+        dp.Add("@WaliKelasId", kelasSiswa.WaliKelasId, DbType.Int32);
 
         using var conn = new SqlConnection(ConnStringHelper.Get());
         var result = conn.Execute(sql, dp);
@@ -39,9 +34,9 @@ public class KelasSiswaDal
                 KelasId = @KelasId";
 
         var dp = new DynamicParameters();
-        dp.Add("@KelasId", kelasSiswa.KelasId, DbType.String);
+        dp.Add("@KelasId", kelasSiswa.KelasId, DbType.Int32);
         dp.Add("@TahunAjaran", kelasSiswa.TahunAjaran, DbType.String);
-        dp.Add("@WaliKelasId", kelasSiswa.WaliKelasId, DbType.String);
+        dp.Add("@WaliKelasId", kelasSiswa.WaliKelasId, DbType.Int32);
 
         using var conn = new SqlConnection(ConnStringHelper.Get());
         var result = conn.Execute(sql, dp);
@@ -67,20 +62,20 @@ public class KelasSiswaDal
         const string sql = @"
             SELECT
                 aa.KelasId, aa.TahunAjaran, aa.WaliKelasId,
-                ISNULL(bb.KelasName, '') KelasId,
+                ISNULL(bb.KelasName, '') KelasName,
                 ISNULL(cc.GuruName, '') WaliKelasName
             FROM
                 KelasSiswa aa
                 LEFT JOIN Kelas bb ON aa.KelasId = bb.KelasId
                 LEFT JOIN Guru cc ON aa.WaliKelasId = cc.GuruId
             WHERE
-                KelasId = @KelasId";
+                aa.KelasId = @KelasId";
 
         var dp = new DynamicParameters();
-        dp.Add("@KelasId", kelasId, DbType.String);
+        dp.Add("@KelasId", kelasId, DbType.Int32);
 
         using var conn = new SqlConnection(ConnStringHelper.Get());
-        var result = conn.QuerySingle<KelasSiswaModel>(sql, dp);
+        var result = conn.Query<KelasSiswaModel>(sql, dp).FirstOrDefault();
         return result;
     }
 
