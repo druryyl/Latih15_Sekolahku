@@ -2,6 +2,7 @@
 using Latih15_Sekolahku.JadwalMapel;
 using Latih15_Sekolahku.Jurusan;
 using Latih15_Sekolahku.Kelas;
+using Latih15_Sekolahku.KelasSiswa;
 using Latih15_Sekolahku.Mapel;
 using System;
 using System.Collections.Generic;
@@ -61,6 +62,13 @@ namespace Latih15_Sekolahku.Helpers
         private void jadwalMapelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new TimeslotMapelForm();
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void kelasSiswaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new KelasSiswaForm();
             form.MdiParent = this;
             form.Show();
         }

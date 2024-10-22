@@ -38,6 +38,7 @@
             mataPelajaranToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripSeparator();
             jadwalMapelToolStripMenuItem = new ToolStripMenuItem();
+            kelasSiswaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             // 
             // kesiswaanToolStripMenuItem
             // 
-            kesiswaanToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dataIndukSiswaToolStripMenuItem });
+            kesiswaanToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dataIndukSiswaToolStripMenuItem, kelasSiswaToolStripMenuItem });
             kesiswaanToolStripMenuItem.Name = "kesiswaanToolStripMenuItem";
             kesiswaanToolStripMenuItem.Size = new Size(73, 20);
             kesiswaanToolStripMenuItem.Text = "Kesiswaan";
@@ -60,7 +61,7 @@
             // dataIndukSiswaToolStripMenuItem
             // 
             dataIndukSiswaToolStripMenuItem.Name = "dataIndukSiswaToolStripMenuItem";
-            dataIndukSiswaToolStripMenuItem.Size = new Size(175, 22);
+            dataIndukSiswaToolStripMenuItem.Size = new Size(180, 22);
             dataIndukSiswaToolStripMenuItem.Text = "Data Induk Siswa ...";
             dataIndukSiswaToolStripMenuItem.Click += dataIndukSiswaToolStripMenuItem_Click;
             // 
@@ -111,6 +112,13 @@
             jadwalMapelToolStripMenuItem.Text = "Jadwal Mapel ...";
             jadwalMapelToolStripMenuItem.Click += jadwalMapelToolStripMenuItem_Click;
             // 
+            // kelasSiswaToolStripMenuItem
+            // 
+            kelasSiswaToolStripMenuItem.Name = "kelasSiswaToolStripMenuItem";
+            kelasSiswaToolStripMenuItem.Size = new Size(180, 22);
+            kelasSiswaToolStripMenuItem.Text = "Kelas Siswa ...";
+            kelasSiswaToolStripMenuItem.Click += kelasSiswaToolStripMenuItem_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -139,5 +147,6 @@
         private ToolStripMenuItem mataPelajaranToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem1;
         private ToolStripMenuItem jadwalMapelToolStripMenuItem;
+        private ToolStripMenuItem kelasSiswaToolStripMenuItem;
     }
 }
